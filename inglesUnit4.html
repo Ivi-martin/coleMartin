@@ -1,0 +1,2020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>🎓 Animal English Academy – Unit 4</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1a2744;
+  --blue: #2563eb;
+  --blue-light: #3b82f6;
+  --sky: #dbeafe;
+  --green: #16a34a;
+  --green-light: #22c55e;
+  --green-bg: #dcfce7;
+  --red: #dc2626;
+  --red-bg: #fee2e2;
+  --yellow: #f59e0b;
+  --yellow-bg: #fef3c7;
+  --purple: #7c3aed;
+  --purple-bg: #ede9fe;
+  --orange: #ea580c;
+  --orange-bg: #ffedd5;
+  --teal: #0d9488;
+  --teal-bg: #ccfbf1;
+  --white: #ffffff;
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-400: #94a3b8;
+  --gray-600: #475569;
+  --gray-800: #1e293b;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.08);
+  --shadow: 0 4px 16px rgba(0,0,0,0.12);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.16);
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: #0f172a;
+  min-height: 100vh;
+  color: var(--gray-800);
+  overflow-x: hidden;
+}
+
+/* ===== STAR BACKGROUND ===== */
+.stars-bg {
+  position: fixed; inset: 0; z-index: 0;
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%);
+  overflow: hidden;
+}
+.stars-bg::before {
+  content: '★ ✦ ★ ✦ ★ ✦ ★ ✦ ★ ✦ ★ ✦ ★ ✦ ★ ✦ ★ ✦ ★ ✦ ★ ✦ ★ ✦ ★ ✦ ★ ✦ ★ ✦ ★ ✦ ★ ✦';
+  position: absolute; inset: 0;
+  font-size: 12px; color: rgba(255,255,255,0.06);
+  line-height: 2.5; word-break: break-all;
+  animation: twinkle 4s ease-in-out infinite alternate;
+}
+@keyframes twinkle { from{opacity:.5} to{opacity:1} }
+
+/* ===== LAYOUT ===== */
+.app { position: relative; z-index: 1; min-height: 100vh; display: flex; flex-direction: column; }
+
+/* ===== HEADER ===== */
+.header {
+  background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+  padding: 16px 24px;
+  display: flex; align-items: center; gap: 16px;
+  border-bottom: 3px solid rgba(255,255,255,0.15);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+.header-logo { font-family: 'Fredoka One', cursive; font-size: 20px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+.header-logo span { color: #fbbf24; }
+.header-sub { font-size: 12px; color: rgba(255,255,255,0.7); font-weight: 600; letter-spacing: 0.5px; }
+.header-right { margin-left: auto; display: flex; align-items: center; gap: 12px; }
+.exam-countdown {
+  background: rgba(255,255,255,0.15); border-radius: 12px; padding: 8px 14px;
+  text-align: center; border: 1px solid rgba(255,255,255,0.2);
+}
+.exam-countdown .days { font-family: 'Fredoka One', cursive; font-size: 28px; color: #fbbf24; line-height: 1; }
+.exam-countdown .label { font-size: 10px; color: rgba(255,255,255,0.8); font-weight: 700; letter-spacing: 1px; }
+
+/* ===== PROGRESS BAR ===== */
+.progress-strip {
+  background: rgba(0,0,0,0.3);
+  padding: 10px 24px;
+  display: flex; align-items: center; gap: 16px;
+}
+.progress-label { font-size: 11px; color: rgba(255,255,255,0.6); font-weight: 700; letter-spacing: 1px; white-space: nowrap; }
+.progress-track { flex: 1; height: 8px; background: rgba(255,255,255,0.1); border-radius: 4px; overflow: hidden; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, #22c55e, #86efac); border-radius: 4px; transition: width .5s ease; }
+.progress-pct { font-size: 12px; color: #86efac; font-weight: 800; }
+
+/* ===== MAIN CONTENT ===== */
+.main { flex: 1; display: flex; gap: 0; }
+
+/* ===== SIDEBAR ===== */
+.sidebar {
+  width: 240px; flex-shrink: 0;
+  background: rgba(255,255,255,0.04);
+  border-right: 1px solid rgba(255,255,255,0.08);
+  padding: 20px 12px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.sidebar-section { font-size: 10px; color: rgba(255,255,255,0.3); font-weight: 800; letter-spacing: 2px; text-transform: uppercase; padding: 8px 8px 4px; }
+
+.nav-btn {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; border-radius: 12px;
+  cursor: pointer; transition: all .2s;
+  border: none; background: transparent; width: 100%; text-align: left;
+  color: rgba(255,255,255,0.6); font-family: 'Nunito', sans-serif; font-size: 13px; font-weight: 700;
+}
+.nav-btn:hover { background: rgba(255,255,255,0.08); color: white; }
+.nav-btn.active { background: rgba(37,99,235,0.3); color: white; border: 1px solid rgba(37,99,235,0.5); }
+.nav-btn.completed { color: #86efac; }
+.nav-btn .nav-icon { font-size: 18px; width: 24px; text-align: center; }
+.nav-btn .nav-badge {
+  margin-left: auto; font-size: 10px; background: var(--green); color: white;
+  padding: 2px 6px; border-radius: 20px; font-weight: 800;
+}
+.nav-btn .nav-lock { margin-left: auto; font-size: 14px; opacity: .4; }
+.nav-btn .nav-stars { margin-left: auto; font-size: 12px; }
+
+/* ===== CONTENT AREA ===== */
+.content { flex: 1; padding: 28px; overflow-y: auto; max-height: calc(100vh - 100px); }
+
+/* ===== SCREEN ===== */
+.screen { display: none; }
+.screen.active { display: block; animation: fadeIn .3s ease; }
+@keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+
+/* ===== HOME SCREEN ===== */
+.home-hero {
+  background: linear-gradient(135deg, #1e3a5f 0%, #1d4ed8 60%, #7c3aed 100%);
+  border-radius: 24px; padding: 40px; margin-bottom: 24px; position: relative; overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+.home-hero::before {
+  content: '🐸🦆🦇🐦🦋🐿️🦎🦔';
+  position: absolute; right: -10px; top: 50%; transform: translateY(-50%);
+  font-size: 48px; opacity: .15; writing-mode: vertical-rl; letter-spacing: 12px;
+}
+.home-hero h1 { font-family: 'Fredoka One', cursive; font-size: 38px; color: white; margin-bottom: 8px; }
+.home-hero h1 span { color: #fbbf24; }
+.home-hero p { color: rgba(255,255,255,0.8); font-size: 15px; max-width: 500px; line-height: 1.6; }
+.home-hero .exam-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(251,191,36,0.2); border: 1px solid rgba(251,191,36,0.4);
+  padding: 8px 16px; border-radius: 30px; margin-top: 16px;
+  color: #fbbf24; font-weight: 800; font-size: 13px;
+}
+
+.classes-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; margin-bottom: 24px; }
+.class-card {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px; padding: 20px; cursor: pointer; transition: all .25s;
+  position: relative; overflow: hidden;
+}
+.class-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(0,0,0,0.3); border-color: rgba(255,255,255,0.2); }
+.class-card.unlocked { background: rgba(255,255,255,0.08); }
+.class-card.completed { border-color: rgba(34,197,94,0.3); background: rgba(34,197,94,0.06); }
+.class-number { font-size: 11px; color: rgba(255,255,255,0.4); font-weight: 800; letter-spacing: 1px; margin-bottom: 8px; }
+.class-icon { font-size: 36px; margin-bottom: 10px; }
+.class-title { font-family: 'Fredoka One', cursive; font-size: 18px; color: white; margin-bottom: 4px; }
+.class-desc { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.5; }
+.class-status { position: absolute; top: 14px; right: 14px; font-size: 18px; }
+.class-stars { margin-top: 12px; font-size: 16px; color: #fbbf24; }
+
+/* ===== LESSON HEADER ===== */
+.lesson-header {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 20px; padding: 20px 24px; margin-bottom: 24px;
+  display: flex; align-items: center; gap: 16px;
+}
+.lesson-icon { font-size: 42px; }
+.lesson-info h2 { font-family: 'Fredoka One', cursive; font-size: 26px; color: white; }
+.lesson-info p { font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 4px; }
+.lesson-back {
+  margin-left: auto; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+  color: white; padding: 8px 16px; border-radius: 10px; cursor: pointer; font-family: 'Nunito', sans-serif;
+  font-weight: 700; font-size: 13px; transition: all .2s;
+}
+.lesson-back:hover { background: rgba(255,255,255,0.2); }
+
+/* ===== PHASE TABS ===== */
+.phase-tabs { display: flex; gap: 8px; margin-bottom: 24px; flex-wrap: wrap; }
+.phase-tab {
+  display: flex; align-items: center; gap: 6px;
+  padding: 8px 16px; border-radius: 30px; font-size: 13px; font-weight: 700;
+  cursor: pointer; transition: all .2s; border: 1px solid transparent;
+  background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.5);
+  font-family: 'Nunito', sans-serif;
+}
+.phase-tab.active { background: var(--blue); color: white; border-color: var(--blue-light); }
+.phase-tab.done { background: rgba(34,197,94,0.15); color: #86efac; border-color: rgba(34,197,94,0.3); }
+
+/* ===== CARD ===== */
+.card {
+  background: white; border-radius: var(--radius); padding: 24px;
+  box-shadow: var(--shadow); margin-bottom: 20px;
+}
+.card-title { font-family: 'Fredoka One', cursive; font-size: 20px; color: var(--navy); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+
+/* ===== ANIMALS GRID ===== */
+.animals-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 12px; }
+.animal-card {
+  background: var(--gray-50); border: 2px solid var(--gray-200);
+  border-radius: 14px; padding: 16px 12px; text-align: center; cursor: pointer;
+  transition: all .2s;
+}
+.animal-card:hover { border-color: var(--blue); background: var(--sky); transform: scale(1.03); }
+.animal-card.active { border-color: var(--blue); background: var(--sky); }
+.animal-card .animal-emoji { font-size: 44px; display: block; margin-bottom: 8px; }
+.animal-card .animal-en { font-family: 'Fredoka One', cursive; font-size: 15px; color: var(--navy); }
+.animal-card .animal-es { font-size: 12px; color: var(--gray-600); margin-top: 2px; }
+
+/* ===== SPEAK BUTTON ===== */
+.speak-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--blue); color: white; border: none;
+  padding: 8px 16px; border-radius: 20px; cursor: pointer;
+  font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 13px;
+  transition: all .2s;
+}
+.speak-btn:hover { background: var(--blue-light); transform: scale(1.05); }
+.speak-btn:active { transform: scale(0.97); }
+
+/* ===== VERBS TABLE ===== */
+.verbs-table { width: 100%; border-collapse: collapse; }
+.verbs-table th {
+  background: var(--navy); color: white; padding: 10px 16px;
+  font-family: 'Fredoka One', cursive; font-size: 14px; text-align: left;
+}
+.verbs-table th:first-child { border-radius: 10px 0 0 0; }
+.verbs-table th:last-child { border-radius: 0 10px 0 0; }
+.verbs-table td {
+  padding: 12px 16px; border-bottom: 1px solid var(--gray-100);
+  font-size: 14px;
+}
+.verbs-table tr:hover td { background: var(--sky); }
+.verbs-table .verb-en { font-family: 'Fredoka One', cursive; font-size: 16px; color: var(--blue); }
+.verbs-table .verb-emoji { font-size: 20px; }
+.verb-example { font-size: 13px; color: var(--gray-600); font-style: italic; }
+
+/* ===== CAN/CAN'T DISPLAY ===== */
+.can-visual { display: flex; gap: 12px; flex-wrap: wrap; }
+.can-box {
+  flex: 1; min-width: 150px; border-radius: 14px; padding: 20px; text-align: center;
+  border: 2px solid transparent;
+}
+.can-box.can { background: var(--green-bg); border-color: var(--green); }
+.can-box.cant { background: var(--red-bg); border-color: var(--red); }
+.can-box .can-label { font-family: 'Fredoka One', cursive; font-size: 22px; }
+.can-box.can .can-label { color: var(--green); }
+.can-box.cant .can-label { color: var(--red); }
+.can-box .can-icon { font-size: 32px; margin-bottom: 8px; }
+.can-box .can-sentence { font-size: 14px; color: var(--gray-600); margin-top: 8px; }
+
+/* ===== EXERCISE ===== */
+.exercise-box {
+  background: var(--gray-50); border: 2px solid var(--gray-200);
+  border-radius: 14px; padding: 20px; margin-bottom: 16px;
+}
+.exercise-box .q-num {
+  font-size: 11px; font-weight: 800; letter-spacing: 1px; color: var(--blue);
+  text-transform: uppercase; margin-bottom: 8px;
+}
+.exercise-box .q-text { font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 14px; }
+.exercise-box .q-emoji { font-size: 48px; display: block; text-align: center; margin-bottom: 12px; }
+
+/* ===== OPTIONS ===== */
+.options { display: flex; flex-wrap: wrap; gap: 8px; }
+.option-btn {
+  padding: 10px 20px; border-radius: 10px; font-size: 15px; font-weight: 700;
+  cursor: pointer; transition: all .2s; border: 2px solid var(--gray-200);
+  background: white; color: var(--navy); font-family: 'Nunito', sans-serif;
+}
+.option-btn:hover:not(:disabled) { border-color: var(--blue); background: var(--sky); }
+.option-btn.correct { background: var(--green-bg); border-color: var(--green); color: var(--green); }
+.option-btn.wrong { background: var(--red-bg); border-color: var(--red); color: var(--red); }
+.option-btn:disabled { cursor: not-allowed; opacity: .8; }
+
+/* ===== TEXT INPUT ===== */
+.text-input {
+  width: 100%; padding: 12px 16px; border: 2px solid var(--gray-200);
+  border-radius: 10px; font-size: 16px; font-family: 'Nunito', sans-serif; font-weight: 700;
+  outline: none; transition: all .2s;
+}
+.text-input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(37,99,235,.15); }
+.text-input.correct { border-color: var(--green); background: var(--green-bg); }
+.text-input.wrong { border-color: var(--red); background: var(--red-bg); }
+
+/* ===== FEEDBACK ===== */
+.feedback {
+  padding: 12px 16px; border-radius: 10px; font-weight: 700; font-size: 14px;
+  margin-top: 10px; display: none;
+}
+.feedback.show { display: block; animation: pop .3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+.feedback.correct { background: var(--green-bg); color: var(--green); }
+.feedback.wrong { background: var(--red-bg); color: var(--red); }
+@keyframes pop { from{transform:scale(0.8);opacity:0} to{transform:scale(1);opacity:1} }
+
+/* ===== MATCHING ===== */
+.match-container { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.match-col { display: flex; flex-direction: column; gap: 8px; }
+.match-item {
+  padding: 12px 16px; border-radius: 10px; font-size: 14px; font-weight: 700;
+  cursor: pointer; transition: all .2s; border: 2px solid var(--gray-200);
+  background: white; text-align: center;
+}
+.match-item:hover { border-color: var(--blue); }
+.match-item.selected { border-color: var(--blue); background: var(--sky); }
+.match-item.matched { border-color: var(--green); background: var(--green-bg); color: var(--green); cursor: default; }
+.match-item.wrong-match { border-color: var(--red); background: var(--red-bg); animation: shake .4s; }
+@keyframes shake {
+  0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)}
+}
+
+/* ===== WORD ORDER ===== */
+.word-bank { display: flex; flex-wrap: wrap; gap: 8px; min-height: 50px; margin-bottom: 12px; }
+.word-chip {
+  padding: 8px 14px; background: var(--blue); color: white;
+  border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 700;
+  transition: all .2s; user-select: none;
+}
+.word-chip:hover { background: var(--blue-light); transform: scale(1.05); }
+.word-chip.used { background: var(--gray-200); color: var(--gray-400); cursor: default; transform: none; }
+.sentence-slots {
+  display: flex; flex-wrap: wrap; gap: 6px; min-height: 44px;
+  padding: 8px; background: var(--gray-100); border-radius: 10px; margin-bottom: 12px;
+  border: 2px dashed var(--gray-300);
+}
+.sentence-slot {
+  padding: 8px 14px; background: white; border-radius: 8px; cursor: pointer;
+  font-size: 14px; font-weight: 700; color: var(--navy); transition: all .2s;
+  border: 1px solid var(--gray-200);
+}
+.sentence-slot:hover { border-color: var(--red); }
+
+/* ===== NUMBERS ===== */
+.numbers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 8px; }
+.num-card {
+  background: white; border: 2px solid var(--gray-200); border-radius: 12px;
+  padding: 14px; text-align: center; cursor: pointer; transition: all .2s;
+}
+.num-card:hover { border-color: var(--blue); background: var(--sky); }
+.num-card .num-digit { font-family: 'Fredoka One', cursive; font-size: 24px; color: var(--blue); }
+.num-card .num-word { font-size: 12px; color: var(--gray-600); margin-top: 4px; font-weight: 700; }
+
+/* ===== BUTTONS ===== */
+.btn {
+  padding: 12px 24px; border-radius: 12px; font-size: 15px; font-weight: 800;
+  cursor: pointer; transition: all .2s; border: none; font-family: 'Nunito', sans-serif;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-primary { background: var(--blue); color: white; }
+.btn-primary:hover { background: var(--blue-light); transform: translateY(-1px); box-shadow: 0 4px 12px rgba(37,99,235,.4); }
+.btn-success { background: var(--green); color: white; }
+.btn-success:hover { background: var(--green-light); transform: translateY(-1px); }
+.btn-warning { background: var(--yellow); color: white; }
+.btn-warning:hover { filter: brightness(1.1); transform: translateY(-1px); }
+.btn-purple { background: var(--purple); color: white; }
+.btn-purple:hover { filter: brightness(1.1); transform: translateY(-1px); }
+.btn:active { transform: translateY(0) scale(.97); }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+
+/* ===== SCORE CARD ===== */
+.score-card {
+  text-align: center; padding: 32px; background: white;
+  border-radius: 20px; box-shadow: var(--shadow-lg);
+}
+.score-big { font-family: 'Fredoka One', cursive; font-size: 64px; color: var(--blue); }
+.score-label { font-size: 16px; color: var(--gray-600); margin-bottom: 20px; }
+.score-grade { font-size: 24px; font-weight: 800; margin-bottom: 16px; }
+.score-grade.excellent { color: var(--green); }
+.score-grade.good { color: var(--blue); }
+.score-grade.ok { color: var(--yellow); }
+.score-grade.practice { color: var(--red); }
+.stars-display { font-size: 36px; letter-spacing: 4px; }
+
+/* ===== MINI TEST ===== */
+.test-progress {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 20px;
+}
+.test-dots { display: flex; gap: 6px; }
+.test-dot {
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--gray-200); transition: all .3s;
+}
+.test-dot.current { background: var(--blue); transform: scale(1.3); }
+.test-dot.done-correct { background: var(--green); }
+.test-dot.done-wrong { background: var(--red); }
+.test-timer { font-family: 'Fredoka One', cursive; font-size: 20px; color: var(--navy); }
+
+/* ===== EXAM SCREEN ===== */
+.exam-section-header {
+  background: linear-gradient(135deg, var(--navy), #2563eb);
+  color: white; border-radius: 14px; padding: 16px 20px; margin-bottom: 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+.exam-section-header .sec-num { font-family: 'Fredoka One', cursive; font-size: 28px; color: #fbbf24; }
+.exam-section-header .sec-title { font-family: 'Fredoka One', cursive; font-size: 18px; }
+.exam-section-header .sec-sub { font-size: 12px; opacity: .7; }
+
+/* ===== LISTENING ===== */
+.listen-box {
+  background: linear-gradient(135deg, #1e3a5f, #2563eb);
+  border-radius: 16px; padding: 24px; text-align: center; margin-bottom: 16px;
+}
+.listen-icon { font-size: 48px; margin-bottom: 12px; }
+.listen-box p { color: rgba(255,255,255,.7); font-size: 14px; margin-bottom: 16px; }
+
+/* ===== CERTIFICATE ===== */
+.certificate {
+  background: linear-gradient(135deg, #fef3c7, #fff); border: 4px solid #fbbf24;
+  border-radius: 20px; padding: 32px; text-align: center; box-shadow: var(--shadow-lg);
+  position: relative; overflow: hidden;
+}
+.certificate::before {
+  content: '⭐🎓⭐'; position: absolute; top: -20px; left: 50%; transform: translateX(-50%);
+  font-size: 40px; opacity: .15;
+}
+.cert-title { font-family: 'Fredoka One', cursive; font-size: 32px; color: var(--navy); margin-bottom: 8px; }
+.cert-name { font-family: 'Fredoka One', cursive; font-size: 42px; color: var(--blue); margin-bottom: 8px; }
+.cert-text { color: var(--gray-600); font-size: 15px; line-height: 1.6; }
+.cert-seal { font-size: 64px; margin: 20px 0; }
+
+/* ===== HARD WORDS TRACKER ===== */
+.hard-words { display: flex; flex-wrap: wrap; gap: 8px; }
+.hard-word {
+  padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 700;
+  background: var(--red-bg); color: var(--red); border: 1px solid rgba(220,38,38,.2);
+  display: flex; align-items: center; gap: 6px;
+}
+.hard-word .hw-count { background: var(--red); color: white; border-radius: 10px; padding: 1px 6px; font-size: 11px; }
+
+/* ===== SCROLL ===== */
+.content::-webkit-scrollbar { width: 6px; }
+.content::-webkit-scrollbar-track { background: rgba(255,255,255,.05); }
+.content::-webkit-scrollbar-thumb { background: rgba(255,255,255,.15); border-radius: 3px; }
+
+/* ===== TOOLTIP ===== */
+.tooltip { position: relative; display: inline-block; }
+.tooltip-text {
+  visibility: hidden; background: var(--navy); color: white; font-size: 12px;
+  padding: 6px 10px; border-radius: 8px; position: absolute; bottom: 125%; left: 50%;
+  transform: translateX(-50%); white-space: nowrap; opacity: 0; transition: opacity .2s;
+  font-weight: 700; z-index: 100;
+}
+.tooltip:hover .tooltip-text { visibility: visible; opacity: 1; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 700px) {
+  .sidebar { display: none; }
+  .content { padding: 16px; }
+}
+</style>
+</head>
+<body>
+<div class="stars-bg"></div>
+<div class="app">
+
+<!-- HEADER -->
+<div class="header">
+  <div>
+    <div class="header-logo">🎓 Animal <span>English</span> Academy · 2ºA · C.E.I.P. Francisco Ayala · Ogíjares</div>
+    <div class="header-sub">UNIT 4 – 2nd Level</div>
+  </div>
+  <div class="header-right">
+    <div class="exam-countdown">
+      <div class="days" id="countdown-days">12</div>
+      <div class="label">DAYS TO EXAM</div>
+    </div>
+  </div>
+</div>
+
+<!-- PROGRESS -->
+<div class="progress-strip">
+  <div class="progress-label">OVERALL PROGRESS</div>
+  <div class="progress-track"><div class="progress-fill" id="overall-progress" style="width:0%"></div></div>
+  <div class="progress-pct" id="overall-pct">0%</div>
+</div>
+
+<div class="main">
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <div class="sidebar-section">Classes</div>
+  <button class="nav-btn active" onclick="showScreen('home')" id="nav-home">
+    <span class="nav-icon">🏠</span> Home
+  </button>
+  <button class="nav-btn" onclick="showLesson('animals')" id="nav-animals">
+    <span class="nav-icon">🐾</span> Animals
+    <span class="nav-stars" id="stars-animals"></span>
+  </button>
+  <button class="nav-btn" onclick="showLesson('verbs')" id="nav-verbs">
+    <span class="nav-icon">🏃</span> Action Verbs
+    <span class="nav-stars" id="stars-verbs"></span>
+  </button>
+  <button class="nav-btn" onclick="showLesson('can')" id="nav-can">
+    <span class="nav-icon">✅</span> Can / Can't
+    <span class="nav-stars" id="stars-can"></span>
+  </button>
+  <button class="nav-btn" onclick="showLesson('numbers')" id="nav-numbers">
+    <span class="nav-icon">🔢</span> Numbers 1–20
+    <span class="nav-stars" id="stars-numbers"></span>
+  </button>
+  <button class="nav-btn" onclick="showLesson('listening')" id="nav-listening">
+    <span class="nav-icon">🎧</span> Listening
+    <span class="nav-stars" id="stars-listening"></span>
+  </button>
+  <div class="sidebar-section" style="margin-top:8px">Exam</div>
+  <button class="nav-btn" onclick="showScreen('exam')" id="nav-exam">
+    <span class="nav-icon">📝</span> Exam Simulator
+  </button>
+  <div class="sidebar-section" style="margin-top:8px">My Progress</div>
+  <button class="nav-btn" onclick="showScreen('progress')" id="nav-progress">
+    <span class="nav-icon">📊</span> Dashboard
+  </button>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+<!-- ========== HOME ========== -->
+<div class="screen active" id="screen-home">
+  <div class="home-hero">
+    <div style="display:flex;align-items:flex-end;gap:0;position:relative;">
+      <div style="flex:1">
+        <h1>Welcome to <span>Unit 4</span>! 🎉</h1>
+        <p>Learn animals, action verbs, and how to use <strong>"can"</strong> and <strong>"can't"</strong>. Complete all classes and ace your exam!</p>
+        <div class="exam-badge">📅 Examen el 17 de marzo – ¡Tú puedes!</div>
+      </div>
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJ0AAACqCAYAAAC3WU3DAAB5vUlEQVR42uydd5wdZ3X+v+875fZ7t1f1bkm25d6RTTHBFBuITGgxBAKmJJSQHyQBjCghkAKBBEIIvSPANBvHBSzccLdVrb4rbW+3t5l53/f3x9xdrZq7sa14/NmPpdXuvXNnzpzynOc8R3AcH8YYcfnll8sNGzYAaMBM/5sQAq21+9WvfrVjeHj4nLvuuGuRdMSaXG7q1Fwun4jHE72FQnFEKVVIpVJ09/buFMLsGRsbG7alLYQQ+owzzhDLli27b9++fdvPOecccdlllw1KKbUxM29jXXXVVWb9+vWa546ZQxyPn2ndunVyw4YNpmFoCCGIRqNcffXVS372s5+tLpfLJ+7cuXNpsVRck8vmFlhSpnzPBwFaB2ij8eo+IDFGo5RGSok2GqN1aLnGEI3FiEQiVKvVYnNzk2htbdttW9bOE0866Q8veclLfv66171uXxAEADYQPGdux5nRXXXVVfLmm2+WGzduDO+ybeP7fuaNb3zj88bHx182OTl5UuD5Z05OTshyuYIxBoPBdRxsyzaO42hLSiGkEEIKBEJY0jKpdBrXdXEsS0tpYYzBDwJ838fzfXytLKUUlUqFUqlIvV5HKUU6na4uXbr0++9617s++drXvrZv+hyf83rHgdGtW7fOmu3VjDHOP/zDP7xwy5Ytb92zZ8/ZlpQ9juOilaJUKOB5ngKMEAIhhDTGCK21EKFLRANSSoQQGKVC4zQG27ZJJBI0NTXRlGnBdV2EkBhLYIwxAtCBZwrFopmcnDSDQ0N2Lp+no7Mjd84553zqJz/5yb8JIfRzXu9ZbHQNY1MAkUiEr3/966f96Ec/etmunbte6fveyclkilQySeB5ulAsmnK5DMbIhn2ERnUw90IrhQaElMjGV1tLC8lkEiEEvu+jlCIIAjCS5uZmYrEYgVZorcnncwS+RzqdJplM4tiOyRfzesu2bVY2l2P+/Pm3vepVr3r3P/7jPz4ASGOMEUKY54zu2XNYgEokErztbW/7k3vvvffdI8PDLxVAW1sbmVTaVCoVPTwyIsulohAIpGUd+sHFwY+ujSEajSKEoFqt4vs+ANGIS3NzMx0dnaRSKYSUKKVQgSHwfYIgwLIsHNsh0AGT2UnGx8fRStHe2kp7RwfxRMLs2bdPbdm6xY7H4/Xzn3f+R2/43xs+W6vV/s+G22ej0Ukppf7nf/u3Szb86Icf2d+//+ymdJrO9jbi8XiQz+Xl+MSkLJfLCCGwbRutj7yv055OG4MBXNelpaWFTCqFUopCoUCpVKRWqxEoRTrTxJw5c0il0yhlMEpRKZWZymZRQUAmkyGdTuC4LiMjIwwMDADQ2tpKb28vyhj1wKYHZb5QEKectObHt//h9jcJIar/Fw1PPMvOVbiuq1/2skv++Z577vtANBJl2dKl2qvXzIH9/VapVAo9mhEIKaERPqfD6GzvZowhEonguC7Vep16rYbv+8SjUXp6eujo6EBKm0q5TL6QZ2xynEq5QmtrG/PmzScWjaL8AKUU4+PjDA0NIiSkUina29sRQjAwMECxWMR1XXrmzKGru8vs3bdPbdu2zT5h5Ql3f/1r/37J6adfNPF/zfCsZ1MOt2vXLv2CF7zgy3fcccdfL1ywMFi9cpUZGR62JibGZSadobW1FduyqdVqBxE5AaLx3+GPmBSCdDpNd3c3He3txGMxtFJMTEwwOTmJbTukUikSiSStra2kkily2SyDQ0ON300hpUU6lSYei5PLZymXy0xOTuL7Ps3NzSil8H2fXC5HtVIVS5YskR0dHcG9994396abbn3Rpk0P/uTSSy+tXnXVVXLjxo3mOU/3DCsarrzynW/8+dVXf3vx4iXe/HlznWIuK7QxoaGMTZDL5/A9HyHFjDc7JHfDHOHttNa4rktHezvtHR1EIhHK5TKjo6OMT4yTTCSZM3cuiWgSQ/jz41PjDAwMkEylWDB/ERHbBmPY17+XyclJHMehgc/NhHchBEGgcKMxli9fThAE/i233uIsXLT4f7dt2/xSEZ6Ymg1gP+fpnkb87Utf+hJ9fX1dn/jEJ67OJNLR+fPmW/VqVfqBz9DQEPv376dcLIZGJsVRi4XGNw4xuEaCiFKKXC5HNpslCAKSySQtLS00NTVRqVQYGhxE67DYsCyLZCZNa2sbkxNTDA8dwLYtUqlEo4rN04BjjqiQpSUJlCY7NUVLS4vV09ntb9q8adk111zbMjIyfI0xxpmGfp4zuqf5HAcODKjt27f/5+CBA+euXrla12tVa2h4iP7+fsqVMpZlIS3rkd32MX5ACIFlWSil8HyfbC6HkJKmpiZa29pw3Qj7DxxgYnICx3GJxxNEI1GampooFHOMjIwipaSltZVcPh9Wv+LobyaFpKOzg+HBQebMmWO5rhts2bLl7Fe+6pWDW7duvWft2rV2f3+/fs7onsaweu2116q//uu/fvHNv/vdZ1csX6FtW1o7d+0QuWwWy7KwZkMhIvwKew2NOCXEzPcf6TCA7Tg0NTVRrlYplkpEYzGisRitba0US0XGxkaplEpIAbFYjGQqSa5QIJvNoo0hncmQa3i7oxm38j1i0QiZTIaB4WFWrVolctms3rpt6yVXXHHFjT/72c/2H+/53TPW6BphVff39/d8+MMfvimdSsXmzJnD9m3bZKVSwXGcYzu0WeHtCMMy5mF/r+55VCoVmpuacF2X8fHxmRytt6eXSrVCLjdFNjdFvV6jpbUVozXFYpFqtYrnecd8HwFYQlCpVujt7aVYLOE4jli4cBF79+2x9/X1vfz73/veN6+88spq48fNc0b3RzqMMeKiiy6yjDHWy1/+8quzU1MrV56wUvf39Vn+MW/qo7k/j+zuhCUxGPL5XNiVaG2lXCnj+T4jI8MYo/F9D2lJCsUi+UKeQAV4Xp1YLIZlWVQqlUM98PT5ihDK8f2AiBuhuaWFfD5Hc0uTaG9rC7Zs2ZK65557VhQKhR9orY9bo5PPyJJaCFtKGfzZn/3ZF/v6+i6a09MblMtlq7Ozk2g0ilLqGMFx9pfmIJvJPOL9O+gZFUIYpITs1CTDQwPE41FKpQLFxhdSoDE4EYdavUqxmMd2bTzPo6mpifb2djzPO6SYSCQSYdGiNcKymJiaJJmMY9uSWrVKKpmyV69eHfT19b3ihS+88CWNk7eeM7o/wrF27Vrbsiz/jW9840dv/t3v3p5JZ4JoLGanUin279/P5OTkUcPmMbDkRx1aD/5MozvR2kosEWcqn6N//36EEDM92RkIRmu01lizipiBgQFaW1vp7u7G9/0Zo5NS0tXVRRAE2JaF53nUajXS6TS+7+P7AfPnLZCxeNxs3/7QvzQq2efC6x/D4DZu3Bhc8cY3vnvj7zZ+NplMqdaWFru5qYmHduygWCjgOM4s4zFH+DoxA5WIx1C+HvrnIFAYA21t7XR2dlKt1igUioCYKUqNMSSTSZqbW6iUKwRKIYVEa02pVGLp0qUEQUCxWMRxHKrVKl1dXUgpKZVKtLS0oJSiubm1cQIS140IS1q6v7+vc9u2bZs3b9689XisZp8xRjddqX7wgx94w/U33PhVS9qqtbVNtra0ir59e8nncriOg9a64TkOTXkUBjcSCQOpPujpQvs8uhFOhz+NRkgRVr06/FnP8ynki0QiURbMX0A0GqNULOH7AZYlsSyLWq1GV2cvvb295HJ5arUaruvi+z5aaxYsWEC+AaFMU6QWLFjA5OQksVgM143g2C6O7WLQSCGIuq7Zs3ePyOfzndls9ltvfvObOd48nvVMMbgNGzaob37zm6f9ZMNPr4m4EdKZjGxtbRVKK4zWlMplAt8nFosRjUZnqsRpHpzSis6uTry6hwrUIbXf0SpZIQRGG9ra2/ACD9/zkNI65HeklORyOXK5HB0dHXR3d2PbFrV6DaUVba1tTE1lSSaTzJkzB9/3KZVLOLZDqVQinU7T3t7O5OTkTPeju7sb13WZmJygvaMTKSSO7aB02C6LRCNyeHjI5PP5hVu2bPnFli1bRtatW2dt27bNPGd0T2Klevnll2OMib7zynf+xhg6o5Gobm9rkw3+OIODA5RLJeLxOCtWrKBUKlGpVBBSYkyYhwkh6OzsJJfNYw5jlcx4tEY7asboTBiQ5y9YQKlUpl6vY1n2ETmg7/tMTEyQSqXo6ekhnU5Tq9Zoa2unt2cO1WqVaDRKS0sLGMgXQpyuXq/T2dmJ67pks1kAMpkMLS2tjI+Pk06nScQSGGNwXIfs1BSxWIxCIa/Gx8el53mpbDb7061btx5XlezTXkhceOGFFqBf+9rX/1W5Ul2ZacoEmUzGsqWFBAr5PLlcjnQ6zapVq5iammJiYgIpLQJl0EKitMF1o0QjcbQ6Mv1RShGPx2ewvWnDs22bYrHIxPgkq1edSFtrO0EQzPy7ZVmkUqkZA9y9ezeDg0NEIzEWLViM60SwpU1LUwtGGbSvmdc7jzk9c9BaUygUGB8fp7W1lc7OzpDi7nlYlkVzUwsojW1ZWNJCGigW8tQqZZoyzZZjO2ZiYvzST3/60z2AniafPmd0T8KxceNGZYxxd+3acWUqkTDxaFzGojEmxieo1+uUyxWam5tZvXo1SimGhoag0chva2+f8WqJRCJsrh+jQg2CgLa2tkO8ne/7OLbN2NgYU1NTrFy5kgULFqBUyAZuzDpwwgknEIlECIKAvr4+xsbGcFxn5nvTzX0AP/Dp7e2lo6MDz/MYHx/H98PvxeNxqtUqQaBIZ8LZi2kq/NjYGBMTE+RyeeLxhEhn0qpcLieuvfba1zceFOs5o3uSqlXAvO51r3t5tVxZ2Jxp0sIYOTw0RLVWAQyRiMuypctwbIdKpUo0FqPu+XR1d2NJ2SBoCpLJJLZtHz2HaAC28USCpuZmPN9HSkmmqQnP93EchwMHDpDP5ejtncPSpcuwLBspJYVCgXq9zqpVq2hqagLgwIEDTExMYFkSrQ8SQ2Yb89y5c+no6CCXy1EqlYhGo/T29EKDFROLxojH4xgTYomqMY+Ry2VxHYdUMiWMMfT19f2ZMUZyHBEB5NPs5bQxRg4cOPDedCplIpEIlUqVwcEBkqkE1XqFRCJOPJ6kUCjhOhHKlRqJdIa29k6KxeLMEE08nkQbgQr0IXjc7AJibHyc3jlzkLZNuVollU7T1dNDEAQYrdm1cxeFQpGWljZWrlyJ0+jD1mo18vk8J510Et3d3Sil2LdvH5NTU1i2nMkND17O8P0XLlxIKpVifHycwFdkUhnaWzswSiNNWFmHXlJjUFiWpF6v4/l1YtGoFYvGzMTExMlvectblgL6qquuks8Z3RM4GhdQX3fddZ2lYumM5uYWIYSwBgYO4LqR8NZpQyKZoFarYdt2SAnPZOjt6UEIZipYKSVuxMWr14nH44fQ07XWTM9IZLNZqtUqy5YuxXEcRkdHmTd3Lu0dYQfB8zz27NlDrVYjlUqzYsUKpqamaGtrAwylUpElS5fQ1d2FH/js3buXSqWCtKyG4Wn8oM6evbvxPI+IG2HxksUUSyUKhQJSyoPeWITnls3mUCrk9EkpMUChUADAdSPK8zzr/vvvPw9g/fr1x4XRPZ15gtXf36/r9fqr8rn8n3Z1dKlsNisHBgdoasrguiFrd3R0LGRvpNJUazXq9XoD7fcYGRnBGINlWXR1dlGtVonH4yTiMYrFIqlUmpaWZvKFPFKGnsXzPObNm0cmk2F0dBTf91m6ZCnlchkpJfMbOFokEiEScUml0nhenY6OztBwhKS5qbmB4+Wo1Wq0NDcjEBg0sXiMkZFhxicmSaaSZNIZvLpHpVSmtbkVpdVMV0NIwdj4GPFkHINmcnISKSWe7xP4AVIKXamUZSKW2D+VnfpNw0no5zzd4w+txrIsxscnXpyIJxFCmMGRQTSaWr1GJBKhVCrR19+HEQYjoVQpk06niUajlMtlarVaSBdqJP5aG4SULFqyhOaWFrq6u5m/cBGxeJxqvTaTb1WrVdLpNKtXr2ZiYoLBwUFOWLmSeCJBrValq6udarVCEGji8QRNTS34viKdbsL3FTrQLJy3kLaWdrK5HANDg0hXooxmdHwMadvU63V279pNIV9gTlcvtmXj+V7DOA2BCqfHvMCj5tUwQs5gIkoplFJYliWkkEjBMiv0kOa58Pr4DwGoIAhktVw7Nx6PUSoVZbFYDOEDy0JYFgNDQ0jLmpk5rdfrxOMxgiCgv68f27ZxHIdYLNq4SRLbsSmUiiRSSQKtUMowf/4iFsxfQE9PD0IIHMdh//791Ot1TjrpJCYnJ5mYmGDBggUNIzaNokGgtTmk3+o4TqN6hgULFpBMJpmYmKBWrRGPx5mcnKRQyGPbDvV6nV27dqG0oqOjY6bqxoQzG4ODg2HHwvNnuhiHt+Zc12VgaNCo4PiZz35ajO6qq64SAB/7p3+aV6tVu+LRGPliUSilMIC0LHL5HNVaFcdx6OvrY2pqCsuysG2HwcFBsrkskUgEbTSuG8FvdCumq0s3EsHzfLQ2xONx5s1byOLFi0kkktRqNaSUbNq0mUIhz6pVq5BSzLBEtFZMTk7gODZSQrVaDTsUlgy9LqC0JhKNsHDhQowxjIyMIIQgmUiGgLVWWFJSq1UYHBwgGosibbsxuO2xa88uPK+OwVCpVKjXaofYW6OHLLTWNDe39GitrUZofdbjdfbT8abbtq0SAF6lslgIERWgqtWqJaVNOLslyefyYMK8Z7oCjcVi+L7Pnn17MQ2Keb1RPExjddnsFOOjo7Q2t4ShzCiEEA2qUYRMpplCoUQmk8FxbPbs2UOlWqanpzuUidAQjUVnZlcdx6FSqYTs4ZYWmpqbibhRlFZ4QUBzczNtbW1MTEw0Gvo2RhmEDL2W61hMTo3T3NZCpqkZozVaaMrVEtISoA2FQg6JRDa6JOIwjxCLx1oaf1XHg9E9TeF1AwDValVMT0tNT9VLKSlXylQqlQb4YBrMjwDXdcnlcpRLpRnw1vd9XNeZ+d2pqSlKpRKlUpl4PD7DvZNSUi6XSSTiYWUZiRCPxwnzynE2b97M3r17yWazqECxZMkSHMehUChgjKFUKLBv7162b93K8PAgUoDjhHMVra2t+L7P5OQkSgUh26XxoJhGN2NwYHAmfNq2jes6M4NE1Vo1rIIbYXwa8pl+Hd/zjivtE/vpfPNyPo/WCm10o/0EUhh8z8NgEEI2eJiG7FSWpkwTucbElpTh7EOlWiFQAdGGYeYLeeqeTy47QVdXTyjxpRWObYfsjniMSMSd6VAcOHAA13YaVPOA7FSBaDRCa2srEddFNozHsW2MMagg4MCBPnL5KebPn08insJ1XSKRyEz1advWQazQhOB0qVQkO5WltbUlBIQbvNIje8FHSYDF8aXo9rTiPolMBm1Chq/WARKDMBqMwRAm3NJIhJFUSmXy2Sz5bI7mdJR0IoYWmkD5lCslhIBarYJWoVOoeR7Z3BS2E6JCnucxOjbM0MgQmUyaSqVCe3s7lmVhNNRqHrW6RyTiUq/XGRgYYGpyEikEokFLmjYA13aolsrs2PYQY2Nj2LaNbdt4tRp+vY4l5BF1kwCyUxON6jT00pawkFoizDFmORrv6bqu9ZzRPcFj3bp1ADQ3NwulgkMu9LTgoFAGI6Dm12c8xsDQANXAZ3lPO+l4FK3CsDzaGAFUWmNJwTmrF+PXPKYmx6hVazOvHQQBwyPD1Gu10NhMWKX6vk88EZ9pedm2HY41yqNfnun+rTGagf372d/Xh/J9bNs+4nemKU1SCkrFEoFSVCrlmXRCGz3DtTvqDZKSSqWSmy4iHg37+TmjO8qxdetWA+Artd+re4G0LGlbljlkMBmBCgLyxRCd1+iw12k0y3vacKSgXvfpbWulXq1SKBRJxhPUtOGsFQs5fX4nA0PjTI6NYIREWqG8l+957N23DwOUSiU6OjpwbAfbtmlKJfFrNTzfR2BQjRzsaHNdoXqARBjITk3NZPfTJFOO4us8z8Or1SiXykcV9TmKtzNCCGr1+gHLshQgjwd5safF6NavX28APvGRj+yPxWKTtXpdZDIZM3MjGgm259VQygeLg1BF4LG4uxWAfKnMmoVzWNjVxv7hYZKxOOl0C4Mjo/z1a15EpVSkf3CAarGIZdtk0k3Y0mIyO8n+/n6UUsRiMTq7uhFGEo3EOXflAsr5HJ4K762a9r5HwIwyND4Blm3DYTmZMYKQjSSnEzOM0VTKJVQQHBJSj5WzGWNMoBWpVOoec5AC/Zyne5yHASzHcapgbivk82QyGTMTYhtf9bo3M9QihECbULywNRPHQuN5Ps3JGC88eSljoyPU/BqLeuZy7+4DrJzXyttfdh7DIyOMDvWjfE0imSSZTFKtVikWi6GWnDZ0d3eHxMzAkC2VeMMLzmJkZGjGWKYN43DjmD7PY3m3ox2VSmWmojaHqUodfqhGGF+4ZOGDxhjWrl37XE73RI61a9eKIAhobm397VQuh+M4JuTDaQSgCT2DY1lopZEhpIUUgrZ0jHQiBkpTr1d46TknkbIFu3bvpr2rlfG8x+0P7eGDr3s+565azLZ9/YyNHiAaidDS0oIQISxTq9fZvXs3SgXMmzePdCrGLVv6aG9O8t5LL2RgeAjHkliWpFQuYox+3JXk9MNTLpepVqszOeUxWzZCEASBZdu2XrVi1XaACy+8UD9ndE/gmL6Ap5xyyq3VehXf8+1EItFQMhcEKqC1KcGpy+ZTKJWQUhIohSMlbckkPa1NgKYUKFYtm8dFp5/IQ7v3UC1miacz/PaenUSjEf7lysvoyaTYvnMPxUKWOb1zaG5qxgQelVIR3/fZuXMHQhp6urrJpJN8bsMNvPK8k/ng5c/nwMAQ2mjiqRRTufxBZrExPHx2pWd9ha5dSkm1WqVerz+i8QohtFZKSCn3fP7zn98DiOm05Dmje2J5nfi3f/u3nVE30tcYyzNGa5ASg48jBOcsm0u5VkIZ0CrAtQRRN8ZJCzsRtkXdMxg/4O3rLsavVdi+Yzs9PV3ccP8+BkezLOxp59PvuJRKucC2h3YRi0aZN6eHVDLJ/NYU+ewU9brHls1biEYjrFy6mLKRfOCrP+E9r34hn7/y5ZSyWaq1gFSmicnsJKVqSGearRD1SIcl5Qwd69FEYiGECUcUm8dc1/U4jmQmnk6crvHwy2pnZ/fthWLBtLa2KtdxAYGUNrlihVWLuml2I9RqdYwwCEvgG83ZJy6jNZFgIl9iaGySc1fO48+efwZ79o9SKeeYrNf471/dhm3BZeet5gt/9VrGxkbYtmMXvb09aCtKb0uG0xb3cGB4FGEU2x/agetEuOCM03lwYJL3/edPeP2fnMe3P/R6uqKC4fFxkqkUfr3O5NQUXhA0BrCn52HNrP9E+AGFwBKScrVKPl9qhNlHujAhXQshSKVS9rEY0c/W42kFHdeuXWv19fXp884/T+3dt++1vV3dFAoF4dWrCNtmMpvlL15yNrlShQf6Rkgn4+i6x0vPWMnqFYu5a0c/D+4+wGWnLyfTnuHMU07kVzfdznC2QlMiyq2bdrC0q5c1JyzmpJOWknIiXH3DLbjxJF3d7fzhga1c+bLzQPncs2s/TU1J8vkisWiUhfPm8/vNW9g3MMbrn3cqL1qziKBqeGDfAXzpEI1HKFfL+J4XKrJbYbEjLIktBbaQGGlRKpbIlUoYoUmnEkTccHYXYdDChFW5mDbRkIUSqIChkVETCCmbm5sOjI+Pf00pddx4uqfV6Pr6+sz69eu59dZbJ77x9a+/xY1EEtKyzFQuKyIRl8mpPOetWsQLzzqJ7/7vXaSTCaqVKi9Ys4RFc9qwYnF+cuMdnH3iQpb1dNLZ2UJvRysbrrsdS1oEAjbet40VS+awYskczj5pBQKfq2/6AxFLUjKwadtOvvS+N2DqdW7ZtItI3KHm1fHqHp0tHfzunq081D/C89cs4VXnL+PCU0+mWCoxODIO0sYPfHL5Al5jmUm95lGp1pisVJjK5mlPxfDqPql0BxFX4vv+TGttdiNiulNrWzYjY1O88aVrzVQ+LwfHp8YqpdL/rF+/nueM7snJ6wCsz3zmM+W58+atrtVqJ2eaMmp8bEK6jk3Z8xBa877Xvpj7du1nS/8IUsLpC7tY0tPOmpVL+eH1d4AOuPi01ZRVwKnL5hDUPK6/ZzOJaAQlba7+7V20pJKcvHoZLzrzJMr5PL/YeBddLc0MTJYYGhnlq393BfPndHPvll30D41R8zWBXyGTSXHfrkFu3dZHtuJx50N7GMiWydZrKO03zCAEkm0paYnZLO5s4dSFvfzZ+Sfy4ddfzMmL5nD17fdgOS4RSxIYfYQGcgOYwQ8CtPb55Rc/LE5eNF/84PpbI5e+4uX//eUvf7l6vOB0T3tPrxFizTnnnJkcGh56ZVtri8lOTkoDSMdi39AIf3r2yZx9xkl875qNeIFhXkcT55y4iObmVkTE4Tu/3sirz11FKpUkMHDBmSczPpHnD1t2sXpBN64t+c5vbmXzQ32sWjyH17/qIqy6x8833k1Pbyfb+4eoBgHvf91LuOTM1fS2ZugbHmPf4AiVSpWIJRkvFLl3zyi7x8sMTxUItMQPwPMV2gh8LyAecXjHKy7kH6+8jJeevZqzTl5GvCnNmScupzkZ5Wc33U4skkQ6FhiDRB4U4UYgpRUODMUjHBgcFScunmNKgXK++/NrvjnU3z91vIglPu1G96Y3vYmNGzeaK654s7n/vnvf2pxpsgqFIr7SQhjN2ESWpmSKP3/1RfjlOjfdvYlELMZrLzoLN51k7YmLuP6uh1D1IuetOYG6dgik5sVnrWHX/hFuffAh3nnphaxZNI9v/++t/NfPbmRovMBf/+mLOHXVPK679QFs1+X2bfuJGsXZK+eRL9f5w479BEaSTqXQUqKEhTaCeMRmYVcr565axCsuWMNlF57Bi88+mReduZLF83rZ3DdK2dOcdeYpaCeKE41RR3BiZ4Z8ocrND26nJdGEloZpIsD0YVsWU4Ui5y/uZO2yufRly7qzs83+/X17bspPju1o7+iQx4O8hHiGnIMxxsilSxbvWbhg/oKxkTGdLRTl1MQEyxbPY2l7hk++/ZV09/Tw1k/8F9fceg//77WvAEfQ0ZxhMl/mFzfdxlc+eAWLVizBNgZj2ZTzBd7x8a/w6z9s5rsffQvLepr43vV3c/uWPrQt+bMXnMPSRfP53A+u5bbNu5BasWReF/3DeaKJZEPjpE5POsFJS+dw7klLWXvmahbOm0siFkES4Ht1FBYCjS0tfCMYmcyTjrrhNIQBZEAlW2JyfJx16/+H0VJAeyaDr9XBG9Boo9VLeb72wTezf3SCTDwWDGrH/sH19/zzAw/c+/84TvaKWc8QoxOf+cxnzPJly1+jfDVXa2MKpZLI5XNccNpK/vVDb6Y8VaR34VyE5fKTG+/g91t2cveOfn5zxybu3dlHtlzlV7du4uZ7d3LfQ32Uqj7dXZ38xUvPJZcv8+Gv/ZwTFi/k/73xJVy29gwuPvNEhLRY2N3C2/7kHIYn89yxdTdjhRo4No6ucdbiLt78wtN416UX8tLzTmLJvC60UmRzecYnJ8kVihhtsIymWvWpeD6+Cki7LkZrBCb0ZUYgbQsXxfb9o9y/e4DmphRKmRnpMduxGJks8sI1C3n/X7yG7RNVqlPjJp5qkvc9tLcyMj7+nUYz91nv6Z4JAJAB7FqtFlSrtVtsS54jBNooX0rbYnwqR29XKx1uhK/+5CY+9IXvEImlkNIQiTik0s5MflRWitu37uOWTbv5wfV/oDmV5E0vO49/esel/Mm5K/nWr25n7py5XHTWStqTaebMn08+n6USVLnghPncsamXVDLO6t4Ols9tJeU49I/k+PT3fk3N8xifzOJEo7Sk03S1NNHd2kxXS4KFXW2sXLmCVDKG9n08V8/AHxD2Z4VtEU2mOXHRHH688UFCHk0QEkO1Qfl1TL3Cay48E+kKVi2fzy+2bRGrmtuI2mLZRz/yQ3f9+suPC5D4GYE6rl27lo0bN7Js6bI9O3Zux5ZSSEKNj3K1hkmk+ex//JQPf/m7rF6+kLZUAt/zqVQr+IEGaVGp+QSBR1QqohEXI1xGp/L8/X9+nzvu38HPPvNuzjt9DblKjXqthMamUqvjRmKgJa+4eC2RiEW5UMB1Izy4bR/3jGe5ZzCLthPs6dvDKy69lBtvuonK7iGiEZemRJwzl85lxcIaOwcmOeOEhbSmYzR3tZJIRNF6lvSssHAiURZ0tuBYdjguCWAkxXKWYqnCu19+Pi953plUKnXmdGTIF+uiqyVBOpXovvvuH3YD/VddddWzvh32jIK6m9uax+tbfOKZDAZJ1I2iNAyNFtnZ389XP/IOLjr7ZFozcbSvEDqgXs5TL9eYypc5MFbgwFiOXcOjTBaqGOPTmYkRtVx27B9l/pxO4q6NRiCMxqAJDERth/FCib6hSVI27B0YZeXiuWweHuNvPvlPjO7r48Yb/5e5vZ2gfFYtXYjB4tOf/zLrP/lJdv/hAS674HSkG6WlvRk3EmkY3EFnbhmBQdKUjOO4EKgAy7KpVCsUSxW6WpvYPZ7jzp27OWVBN60dbSSakjQ1N+HGom7f+FjkeOlIPCOMrqOjwwCUSqVqpVI2ixYsEJlMBpXLM5ErYNkWX/3Ue6BSolKtoaplHDfG4NA4D2zfw+8f2MnuwUn6BgcpV+rk6gEKw5krFrOgI0N3U4bf372Zy1qaicVctDJggkbtaHBcl74De6hXSjjxKOedspLN/SOc/LLX8fYr/pzh4RF27d7J7278LSuXL2cyn+Occ8+lmh/liotWc9FJL8USNk2ZBPGYO6NPMp2yChGuZUdpEq6FY1kIY/C1oe5VWNY7hxecvJjelgTv/sw3+dYHr+CM3i565nYzVlWUyrXCaatPy266+9bjwuieEdoYjc3UpFKpHSDE5q1bhTYQS8TI5YtMTk3gezXGSzVA4mjFLbfdxdd+9ls+9bVf8sv79nHj/dtoW7iCzuUrqfqKSDSF7yYoVwOqtRrD4+P8/t4tuLZEaG+mYpRCYIRkeGQK27GZ29POomVL2Faw6E1GuPZ7X2HT3bdx9ukn0dveRHdTnBefvoqXrO5iibeHv7zkTOZ1N9HbmSTmELbFDu/oG6vBB1S4tkXEshGWYHxikrOXLOSiVfO5+MwVXHL6UtYs6OQHv38QGU/T3d5milWffLFy4Otf/8IExwnT5JkSXjUgv/jFL+7/3cbfXz2wd+crXTeq7HjSKlZrHBgcY0XnQpySjV+vc+Pt93Hnln5uenAHL73i7bzsZS/jUx//KCuXr+DqX/yck1YuJ5GI8cX/+Tbf+Pr/EA9GaWpxuPuBLZyyfBFdbSlqSs8MNfu+z6rFcyhMjtDc3ML8uXN5+8sMC9pSWEGVsh5mxfIm1n3yr4hIiLkOQeChtaFYrobDOyIclbSkaIgei5mUfzp3040Jf9d2yBbLNKds3rnuIm697yHOPmMVtVKOtSvnc/POUQpjY0QsqQfHcnKqWLndtm1zvEAmzyQVICOEMP/xhQcvP+3M0za+69ILZb2YUzpQHBjNYcWbsIRhciqPVzf0jU+S7Ojm1etezclrTuL1b7qCa2/4X5yow1g2z4ply6iNH2DF3C6iHe08/7QTsDX0DY3juJGZ+s8IQaAUvZ1NXHDmSWAZbrnjVpZ0t7Bp5142btrL6OgYjjDYwhB4HvlCgXKlRq3uY0kZskbkrHHCaRrJbIa5CP/dkQLLscjnc7zz5Wt5wTknEmnvYtOeQVqbW5k3twe/WiY7laceGLFt7wF8P/iNVuq4YQ4/kwoJs27dOnnRRSJ4/bvf+5G4nPj9+195ofjwt35N3/A4ROJov05PTwvnx1az9vw1aAH3XP9N7vulINM5h7eveynl7CjzWzOcumI+6epOlpzcibE68SfGmdvdSjXwCCcEpzsC4aifsRxaWtvItMDN9zzIHd+7mkQiTntTkr1DPruHJlkyv5ul83o5+qjOI5AyG/8eScQoVSqsWTyXV561HBmJsfKUE9l42y1cfNHZDBbuJB13MbGUGR3fbu3Yva+44IRltw7072Xjxo3qud7rk3xs27bNrFuHteE79/SVrcjpb7rwtOV3bt+tqkLLN7zsIqoTY2gk8ViUmOMSj0ZZvWgOq+e2MiclOHvlfNaevpKTl87BMop9+we5c9M27ntgGycsnUfd93ATGRZ0tlJvLBbBCCQh581IgZSwaskSErEIe/sHqdV9zjl1NWetWUkyYnH4rmIjBaaxt0IiQ+qIERykFTeGc6Qk8APqtRpbdg/xrlddwOKuFjKLl/Dl7/6cnlQTB/oH+emNd/H3f/MOHtzRrycnpuQN92y/ZfuDD/7XLC2T5wqJJ/sYG1srlApErlbfUIunueyCU80992yjVChiN4SqlQGfcI61UK5RCzR2NEq9XmdiMs8t9+3k5rs3sbV/hJ0HRjn7jFNo62gLp/ttGVKKpgdtppeRYHBsG8t18IMqa5bP5YpXvojli+dz6133s23nbqLRSKP+OHLhnYGjjxWaBk5nNEYYatUq6//85Zy2bB7NPb384Orf85trN2KExaSn+NJn/pad+0cQum4C6VCq1m/Q4SDPc0LXTzF8YhYvX3kgpx1z6uolcmIyy66+/SQSDZVNKRrJu8C2QuYuRmFLQVCv0ZKOcfaZp+PXAy487UROXNRLrerR29NFV3szfqCOGg6FMdhGIKVD3TPE41FeeO7pvPB556C0wQ/CAaGjGpY5xiihAEQo72pLSTrTTGtvEzKSJIg08akvf5dEKsHbXvMC3vWGS9i2fQ+DfXt4+cUXWL/87R31JYuWX62NgauuOm40h59xcgXbtm0LJbdcdywej/zlK847NfnF7/9KL1kwT5x/xkpK2RyWbSGNARH2LoUAdDiiGI04dHV2cMtdD9LZ3soFp66iXC4jBKQSSRLxCEopZPjrh5meOJh9NUKm73k0JeK0NTeFS1EO/43Ga0ghDkp8YY70SyaskpESIW0MkGjvYe/gKO9c9yecMKeV7OQUewbGeNMrX6iuvvEO8bVf/e7GA/17v6C1lmzc+JzQ9VNaURjDt751T7Bj31A+lYpzzrK5XH39XeDEEbYbikSLgzOjMzojDZMZGsvS1tbGeWuWUanVwJKNQW0fHfgzGiHHWgR8iAkKgef7KBXMzN8e65wPNd4jvaFuzMgGnk8qk+L+3fv485c9n5dfcAr5ag1LCP7krBMoVwPzH9+/RqxcufI/giBg3bp1x5WCzjPR6MxasE86SXoP7er/zV07+vm7N79K3/XgJsZyPolUGqOPjY8GGhIRi1WLuqkFoXOQjdwtVIUKW2AzXN1Z+dmxDOrYC+6O+RGOmGnVWtPIzVBBgONG2LZ7P8MH9qNUgJAOnnSJNjUFH/ny9+0H+8d/9cC991wDyA0bNqjnjO6pzuvWrTNaG7rmzv/+5759DS+48ByxZmEn1932AIm2DrTyj3nqEoMrJcYPEDOLSiQWgpqvyJdKyKPsAZnRk2sAuEKImXXs5ig/e+QXaBRGhAXDIR5TSLQRoMNzUYFPJJJkYmSSZERQ82pYKDpbM8F/fOc6+7+v/u3Qm97wlr/0PF9yHB7PyA+1YcMGtW4d1m03X39n39jkD7578wPWP/zla9W1N98C0fjMeN+x/UyjOp31d8uyyRarDI1ncR0L3Vh0d7gxzSifzxSeDy/9cFAG4/C/m0NkI6bXR8lG680Thn2DA8QsS3uT42p0YEj//We/aX/s6xuqL7v0FX/2hS98erQRVvXxZnTP2IHKlSuvMhs2rBcf/+xn3/dP//D/Lv7s+65ozg0P65HhMRlPJPDq1VA08ZBMyjCbBD5DLDIaKW3yFQ/LTSCljR2xEBgCr36kvBehrIVjga+OUbE+xhzVGA0iVE53HRcPyb1b9zDQPySTiSg79o8wVvPvfOmrX/nX3/7K1+4CrOMtrD5jq9fpY+PGjWbdunXWJz/ykWI0mSm60rzMaHQk4sg1KxdTyWWRszYWzpSRIvyzQU9PkoIJSKaSPLhniI6WJjrnzcNOt+Im0xgV4Hs1kKCRGK2JxaLcvmUPjoCmdAJfBYfuIT6WauZRdSYERocqoUoHaKWIxGJmkrj4zk9+Mzql7Mvv2L73RyeceubnD+x6aP09f7hrsHFfjkuDe8aG11lhVhuQP92z53/2jhX3dHe0yF/99g/aioZDMg93TOdUEoURNpt3DzCezRJrSiNiIcirpY2MxLEQ2MIOAVwT7njo7W5n46bdOHJa8ksctVJ9NII6SqkwvBpBEAQk0kk9NDZFoVLrH+zb8xtRK/7qluuvuatcqcJVM4LWPGd0T1clu3atPF0If7TofTsSi4v+gSE9NFomObPM7eGrSMeWjE5MsWX3ATzPZ3Q0i2UEFuAENYRXRRnD6OgQjg5IRRwkmqW9LWRzOfpHc8Qc+bgJ4uFSFc20yp1WGjcaMbv3HaDqeXtr9bplDJF169ZZgGD98ZfDPWtyuunjwgsv1Bs3bhTCin/rgZ37P5zLF627tu7Tlz7vJFnp6w81hQ0g9JGhz2jibpL9gztIRCKcccJ8vvKT62lJ2fjlMsYPKBTzNEvDZL7GF75/PQ/sOcAZS+fzV396Mdu37+WyC05Dz7TLjrQ8LfQsJ3jwveXsfE5P6yiHGxDdaJJtu/uIRCIDdqiwKY7X/O3Z6OlYv369Xrdunbxz43X9Mp78mz0jWXn9HfcLkW4xRobDykYcSzdOoIzEjUX4w32buP+Bh9hww+18+gvfZmpgiPH+A7ilIpO5Cj+59QE2941QrnrEohH+84fX0NPTybzeNjzff8ydz2nj11odrGQNSGmhbZe+/YPE48ld2ujjhrL0qK/Ns6nokVKqi19+2cuzA/s23PCdf3HV5AC6VhXGAok8Irk3GDAS23X4569eTf/+QdJNCQplxZL2Jp63ag6RaASEBGloT6WpeB7b9x3At2O8/AVnEmAjtQLJUSW+jDyogj5bAlYSzkEoX6GCUE0dYzDakFlygrrwDR+wrFjTxQ/ce+cN69ats57zdM/MQ2mt7Rt+9YtfId2Nd9+/WTQ1NWnlB2BmV5MCjAQjESaERZRf54NveSUvWHsGa1cs4FN/fjEnLu3iwQPj9E9OkI45RFBMFXLYsQhr157Lupc+D6UMGBWylQ7pcmmENAhpGsrD00Vz+Hc5jc0FGqMURjUKlEART6c5MJ6Xg2Pj/nlnn94fwkMrzXOe7hl6rF271r7wwo3657887S9fdu6q//rk31wRjOzYbtuO3cDSGrffHISFjWjMnRpNPBajlK1S1VUyqSS+b8iNjbJtRz8LF82hu7sTGY9DY4OPJeRRL5CQ5hE1hlUQ4Hs+Jmh4OgP1epV5K1aZX963W7z5PR8bq9WqS4UQBY4jwcPjzdNx4YUX6vXr0Wedf9GNt9+7rVbI5q1kMtXoxYpjIbPhHRUWpbKHSDgkm1rwtQRL0LtoAaIlgyddYslYqJSpNM4xDO5RosHoQGGCECrRSmN0gAoUiaZWc/Mf7sWS9lgikSjMwqN5zuieoUUFIL7z1f/YMzhV2nTb/VtFsrNTqUAhsBAm3D4jGjd+dkwUGCxLIrUB30dohfEDyqUyK+fPYXC8gPICRKDQGrSQjY6HmAmp019GHwzhR4YOgVEmDKlaY4xGYwiCOhHbplAPzPU33EFLS0su3BaE4P/Y8axrKK9du9aq1eto6fzgpzfcDalmI6QFWs/I7x+0tSMl+DHTmpcGT7pcf/smDowXKHpV4tEoyXiEeNQNd4EJUBgCY9B6mpo03Wo7NjYYBEEICJtQt84YTVDxaeno4Ibb7zJ9gwNYUvc1tvlYzxndM/y4+eablTGGdVe+5Qd3PbijMDAwaiXbekytWj3kxh9pCqGhaKNBBcRch+bmJMtOPAHfWLzoeefyQN8Atz6wh/u272VgMoeHIJ6I05ROkkrESUYjZFIxXNtqtAyOgtspHW5CbIDCSilMEKCkwGnv5Os/uIbezna6OrtcKSX/F49nnYJyY02R9c8f+MDo8hUn/vonv77hde995xXBaN8O23IkthNhNjFjdjvU1z4x2yaIpnhgzyCjA1vxjSDV1szVv/wtYqxIS8KhZDsMWgNU0djJKLHmOB3NGUYHxti9dy8ved4ZzF8wFxX4yFmMF2mg7nnoQBEohQoCjNJ4Xp2O3l7u2DHE6MgIr7joHH520x27j7fthset0UG40G7Dhg2cce7af/3hL377Z39x+SUy1ZQxxfExkW5uxZq9+rKhnGQjSaSijBYq3HHznchckUXtHeQDj+qOA6yKSJqWz2MiW+LBA8NsGx5mqlim7PtU/QBpSeIJl2RzhuTd25nf3Yaw3XDZSoNT5/s+vuejgoAgCJv7Wht836Nj7kL++bOf5i9efgH7p0qMZitTUqv/k0b3bH7ULNu2VeeceVe/77UvvuxvrnxVsOt3t9rRVJxIIokzSwbfKE25VufWTXv43R1baNUCbRukZZGMxEjFI1i2ZHCswMhUntbmFMu7O+hsa6YlEaMlHseNRWhd0kGqNUF+ooBvFHYDMJ7uPtTKFQLPJ/D90Oi0oV6pMGfxIm4b8fnbv/0wm274bvC+z37D/vXtD3xoqK/vM89bu9beuHFj8JynexYcV111lVm/fr34s9e+8R+++uNvX/LKS861uhYtMoP7dglhSYglEZZN0nG45d77+cx3f02x4nP2osW0draSjtj4ylCoVTkwmSXiuKxePJc3vWQtc3u6kBEb3/MpDI9TrlVJdsUJpGByLIdjC+wGDWo6tfNqdVQQHPxSCu1pHMfF7Z7Ph97zXt7zmpcQa8kQIGlLNZtB+p4Lr882+GTdunXW5z/7iW0nnHDSP7//E//zDz//zqf9eDbreJUq2pRx4zF8V5BORPjEu9/AopZWGC/iJhPYqQSReJwQVRYoEyCNoeIFFI1CeAF+tsyBiSl6V80jkokQBB6OFKEmyUzoBt9rhFU/xOJ0ELJKqpUiJ557Pm//1P+wsi3OS887CV2pIgVI2+H/6vGsLp82bNigldLW5s33f/wPD+6+59Of/64z79znKQ+Dqgd4uTyVYonVq5ayZnkvsfY4kwnJ5oEhKrU65XqZUn6KQm6canaSoFTBqdewqnVG949w3d33U22LkW6NEgQ+QoCankKbrlaNIQh8tFIhVBIEGAy1SoWlq1bz39fdxc033MBVf3EZU9l8KAgrBOVy+f+s0T3b9/+Yq666ygghvH/70pde848f+fvfz+3p7n3Di89S2275nRWLRihnfWrlCrYbJeI4tHW3si9b5oe/u52EseltDSX2a55hopBjOFdk19gUuewUf/3WdZx58lIq5XAhnpnubhgzMyGmVRhKA6XQyqBUgF+r0tXZzR39U3zk0//Bf33gtUTQeFpgRWwcx2JodESEO4TFc0b3bA2z73/nO/e+7W1vW/ehT3/pZsdo95WnLtO7tm2V0Xgav+bjeZqqAEsYTl3Yzpwml3u29/Hde+5hd/8gEkM04pKKReltb+LUM5dTy47Tv1PS3NGG61izYZuGATbCrA5lI5RReHVFJpli+1SVK/7u8/zVuudz9gkLyU7kSLW0gC1JxqNEY+6KhvzXc+H1WRpm1dq1a+3/+Z//ueOSV1x62bs+9u+17922Uy5YeoLyPA8sG0vIhgCiRamQoy3hcMGqBZyzdA6Xnb2Ky85bzQtPXMKpC3rJROMMjxfYvLOfgcFJvErl6PPTgBQSKSQ60ARVn6ZMgk2DWd720f/gxacu5bVr15AtV4ikM6Rb0+ApK5WImdzExMXB5N5mQF111VX/p1Di4823WwLUmedfdNoDd932y3/6wF/2vOEFp6rJoX7LGBvbssOhHaOxhWSyVOaH12wksGL0zpvDvO522lpaSCViWCi8Wg3XtljQHkfYFoG0sPRBRSbT2GhdLBQoT2ZpSSe4fccQH/7vn/G8k1fyqvNWM78jQ1VpOubNwXVtOhct5is/vVFd+cHPWKecsubnDz2045XVatV629veJru7u1VDadM8Z3TPqmOtDRuD97znHSds+Nmvf/nys05c8uHLn2/qQU14nsaxBUIKHMfGiSWoGZt0JkU8EsGyLYTrgrRDYqcJuwn1Qhbl1WYk+mcIBVJSLZcpjI7Rmszw87u28olvXs0VL1rL8nntnLysB79aI9ncTOfcOXi1Gp2LFvHfP72BDdffqVCBNVGq/+fePXveXSgUDnl41q5dK0JWzXr9nNE9C45pJu5APt+6auGie1d2N8/7j/f/uWmP27JQqZGIR4mlUliui+OE8voeklhzJ1I0iAFSok3ITpESalOj4PsgDcIYhCWpV+pUJsaIunH+9ee38quNd/LGi8+mOZngrNULcS2BFoKeOT040QjK8+joncsPfns3t927nY995L3qpZe/wxoYz179mtde/vPzTjn91le/7nUjUlqVWUNHcu3atfJ4MsDjtnQ67bTT4vfee2/lbW9926fv2Hjjh+qFfPDxt7/Sft7qBVR8Q6qlGewIEo2QFgiJE4khHDekgspwXyvSwmhFNTuK1KFkhJQ29VoFUyhTrtZ4/3/9hIHBSf72dS9l094DvPicVXQ3pShX67R1tZNuTs1omTS1tPCH3aN879cb+cq//h25bEW/9xOflz/+xY0k4sl6V2fLaKaleeOJJ5xw07v+6u2/Pe208w94njdjgOvWrRM//vGPdaMH/ezMgY5HL7dt2zYzPDzsNzU1kWlp+/MVLe7Jp66Yb9Z/41fSkjbnr1mBdtxw/7S0GhIUBl2v49eraK9GUK+i6jWEUgT1Kkb5iFBYGON7uJ7iDzv28d7P/wgdwMfffAlX37aJM1Yt4MT5HZRqPvFUnNb2dgxqlh6xwLNj7Owb5rwFHeBXxWve9Fo1r61J//K637kDQ8OZyWz+5G3bdl7286t/8bZlixeff+5558f+67/+a+J73/tebvPmzWZ6Zem6deuelQvqjhuja6ylZNu2bdoYI2u1yptt2/nqrbfe+hK8uvmLF50ql/R28NVr7+CB3ftZe+oqOpqSVINwhkEYjRQqnHkwobCEMQGBX8MEAQiNbVskhcXw6CSf/f5v+MKPbuDS80/hnZecw9W3b6a9Pc2rzl1BrljHti06ejoRjjXDdBHTK9aTzezsH+GclQsoT45RzU7Jcy44Tb7qJReaB7buNnv2HVDxdI8p1ILI8PDo0v59+15x7a9/8dZFixeef8EFFyX/5UufHfrBt39Q2Lp1q5n9oD0XXv+4n0ECKhaL8aH3/fWlN91860e37njo1Hpg4VUKpqslJv72lWtZ0N5ELVB89bo72T+RZ/1b13HJBSfj2DZVFeBrE2rfNfAQ2xJYlsGyLPADhgYn+fHv7+cH191GZ3OK1z3/DOY0xdk5MMW+iQmufMUFVMpVlNC0dXaQbm3B1zr0kI3XlEZjWrv54XV38Pq1JyEqBXwTkrHaF87Hi6b5u098kc//9w9p7Vlm4vGULuQmqFUKVuBVcWxDR1dHdumSxb84+bRTv/WlL3zp5mrIJZQclG95ztM9xaFUCyHMN77xjTWVYv671/zmur/fuW+oO9m8UMVjKbJTg3J+dwenL1nAwNgUnS1Jzl46FxPA566+kZvu3gqBT9qFeCRGxJFYEtABlUqFPYPj3Hzr/fz7D2/gX394Pbv6B7js3BO5Yu0p1JRHqVBny+gQb/qTc1CBQhlNLJ2itaMDPXtCLUSVwYATi6MMNLsGITRSWEigkC3gCHj5a17F8sUL+fWvfiVGx0dlLJGUjmWbls5FOgikmZoYjw8M9q3ZsW37m5YvXfriF1384v1bt27d09A8Fs95uif5fNetWyfHxsZEY8OzMsa4b3jDn3/q5ptvevfwyGg0kZmrW3uWYElLHnjoFv7i4lO5dfM+vvnht7Jj7wC79vazbG4XmYjNRLHKr+/Zwe0P7QUk3S0J0plEmHfVPHKFGiXfJ2VbzO9s5YKVc1nV20XN9yl6ARKH7SMjvOzME2luSlL36li2Q8fcHizXncWbP4j9CiOwonFiLS0UhvrDUUZtNexREGiNdKO0L1vOQ7v6eMfffprb7t2KE0nQNf8ksGyEr83U1H7l1QqyXJiQTZk0J5285rsbN258lxCidNVVV/FMrnSfFUZ31VVXyfXr10tmbYtxXZdf/vSXZ372Xz79uTvvuftcrV3saEK1zTnJQtUYHNzFOfMifP5dl/P6f/waX/roO1nV0cLPb/wD/QcGWLl4Hvg1pGVjhGA4V2I0X0F7NWpBQCaVxLFsepuSzG1rplqrYFuSA+MF3KhLYAQ7+sd48QUnsagjQ9ELT62tu5NEKtnY5SqOedmFFEfo4007Q4KQRNDU3U6krYczX/Jm7ts1xpJV56GMxmBTmtpPc+tC6vWS3r/zDmNUxTrp5DW3bd2y9Xzf91n7DObpWc9kQwOs/v5+3fBq2hgje3rmn9PZ2fay1ubmT3z7u//z8c0P7VzYMf+CoLmtR9RrRek4Nl6tQGF8P2+75BxOWdrDb/6whfPOPI3ulgTdUYcpr862fUO0pDL4uo4w0J6KM685zeK5rSxsb2ZhRyvpiEMi6uB5dTSCqq+wLYktJNc9sI+Lz1zGCb2tFJWHZSxSLS2kW1rQSj+ymtOxRBYBbIkxkoiw+fV1v+NLG66ntXPZTDfFdSIUc4PE012kWuaKdOtcWSnk/QP9uxYsWLBgzdTU1LVvfvObaw2Mz+rv7zfPebpHBnahIZeVTKb41Kc+d8p11224fGBg4OVjo2OrisUigXGwo2k656zSHXNOkbu3XI1Qmmi8lXK9hDexj2+/93LWLJ3Du/9zA2/40xfz6gtPY+fmbcQsh5s397NvoI+TlszDq/sYYbBRlCuaaERSrStcKUilU+jAIxmLMlkJaElEuO6BXaxY0MuLTl1IoexjWZJoMk5771yMMUgD+gnAaL4yNCWS7JvI86I3fZCiaKe1twe/6mGMjRFVSuMDdC04mWiyDWHFEcanb/tGVc4NWAsXLrr/nAsu+NCPvv+96+u1etinWbvWvvnmm9UzAd+znknGtm3bNrNt2zYjpTR33vngokjMebvRwed+9fMN6zdv2Xb+2EShQ7rNprXnFNUxd7mRwhHJ9l5ZyQ5QyO4nGm8HW+LX66RlhddfdCrxZJxbt+xh4bxuTlk6FyMk2WyOFfN70JbF1j0HmNvWhNDgG40IQifkGUPUcaj5dVqaMuQrNWIRl/v3DnPCkgU8f81C8uU6tpRYlqCttxtpudCYmXi4O3s0UW1pQAhNEPjEoy7ZUo1X/dXHGSwIuhYso1qtIqXEFoZSfgrLhmgsQ90rY1sSJ5qguXORrBazavDAnp7+vXveOH/+govPP/8iZ/v2Ldvf/OY319evX/+MgFfsZ0IYXb9+PRs2bFDJZJJPfOITL/nNb655zZ+95hWvGhkZS1XrmkRzD70rTgvSzV3SduPSD6r24EO3k8w0UStMoGpFdBDgRuLYjkOlVCYVd3EjLjrQ2FI2xGs0bjxBa08Pk0NDnLp8PhFhc9/2HZy6aC5+FWy7Rl1LUpEo0tJEiaJ8H9uNc9vW3Zy1ZhmnLJlDuVTGdhyMVrR2d4ZkAhUgLAvPD7Bt+TCR9WiSY+AHmlQkymSxxqv+5jNsHSzTs3AFyghibhKvWqSu6viVHJ3zVkwngJRKEwRBQDzZxoITX2DF+9v1SP8msW3btnP37dt37uLFS96/7pWv/q8f/+wnX2vIWEgTkvnM/ymjaxAY5fr161UkEuXjn/rH11//m2ve/ZnP/NPZ4+NTuPE2WuadpRZ1LhJuvEkKtF0tZalO7GFsaAduLIEVSWC0Igh8bOEibYHyws6Ba8sQXzMaKWUooggoJInWVmqeR2F8nFULu9Bobt+8kxWdrTjxOEkByahLzQ9IpRMMjkwwMFnmzBOXctrSORTLFaRjYwJFS2cXbiKFCQJsy5AvlckViiyY1xsuK3n4q0CoaQdKBTRnUvQNTHD5//s3NvdN0jVvCdKKUS+WEJYklkgxuWcnqY55SCeO1gFSuAhh8OpFlFfGcmN0zDtRtnYvIju6X00MPmT27t2zbGxo4N9OXLnyne98+1/9w1e/8ZUfCyF4utSing6jE2vXrrWEEIFlWerr3/72Od/76tc+9i//9I8XT2TzZNoW6wVr1pp0U5uUlmspo6lVpvAKk/iVLIXcCLYQpDO9KO0hpYNWCmV8lJKgPRw05XqomiRQSNelrSlNYCSWFBitaO5oJ6iUKRYLnDC3jVQ8yl2bdhOpebQ3pSjW6pQ8zYHsKHUv4HmnL6e3uYl8sYpjO2hfkWlrJ9nURKAUILEtQf/QCN3t7cDDKwEYE2okKx1gCZv21jZ+e+cW3vyxf2ckp+leuAoBlKcmiGeakcYwtHcryeZuUulOgsDHsizMjGKVIVAeStdRvk8i1Uz73FVWR88y8lMDerhvi96yffuS4bHRH52yZs0lH/3oRz/0spe9bKRhA+qPCSr/8XI6g1h781q7v79f9/f36827ds3dtW3bv/7gu9/+wrbd+5a6qaVq4aoX0jZ3mbQiMRn4vvAqU1SzI1SyQ9Sqkxjt4dUrZNoXoqSPNAKEhQrq1Cp54vE0ComQkuzUMC9Ys5jWdIKhySLnnbmaeDQSSpxojcAQjThUyhWCuk9rzGHp4nlYbhgehR0hHnFY2NnMGSvmEY/YVLwAy7YxQUCipYlMRytaG6QQWJZFvlJn5+59rFq+GN/3w6UpD1O8Gt8nHYuCFeOz3/o5V37iSwROFx1zFmNZAr8eEE0m8aslClNDRONxWtqWoowX7kNrXNiZRXiNlQTGeNRqeYKgiuVESTbPEa09y2Q8mtAjgwN6cGDfKX+47bbXXPrKP929adODDxljRKONaI4bo1u3bp217fJtur+/XxtjopOTkx/4p09+/NsPPLj5fGK9cv7qi1Vr72LLSFt4nocqTlDLD1MpjRMEFbRSOBKKhSlSzd0IN440jb1gSDABtVKWSCwDliQWiTAyPMCCjiRrls5j7rxu5sztPKjuZAxCKyzHwXEjVMtllJAIo+hoTjK3o405bRm6W5IkolH8QIctLBtQAfHmDC2dHSFNnXA6LBGPct/WPcRcl/lzOvACdRSjEwgEQaCwpKAlk+L2bX285aNf5LvXbqS150Sa2rrBdvBrHm48QVCvUMmPgyVp61pKYAKEFIcsW5m9PipcHSCRSIT28b0yBD6WJUi1zBFtXYtk3asGQ4N7mwcO7H/tmWed5e7bt+/miy66SK9dGzqFZzVkMp23NToH0fe8591/fuMNN753YGDoBO220b3kPJXMtFsmqON7JWq1Mn41h/Yq4cXEECiFlIJyfgI30UQs1XokxmUEY/vvp71nBcoojO9TKRfosLP86OPvxpKatnlzcBwLozTWjCSxRlgWpVKR7OgEFhzUs5vO7hvCTdqEKkxNTU2k29tCvR4DSAnCoIXFz6+/lYvPP51UwkUfskoq3IQeSsFqmlJJ8hWfz3/3F/zrd3+NZ1x656/AlnE0Cl/7OE6SoJKnVBhFug6t7csJVIC0DEJIDEcuXpkOs8aIxkqqxt+VxrYjRJJNRGIpEDA5uEv3PfQHbKnkoqVLbn/7X779yr/5m7/ZDNjGmKcUWpFPpXcTQhjLstTnPveFyy666Hn3fvtb3/7Knr7JE1oXPU+tOONyk0h3WvVqjlJuiPLkAEFxFKEDhOVg2TZKh96sXMxhR+PEE5mjGBxIWxKJJSnkhsFokA5NbXPoL1h85ZpbSCVjFCdyWA1JzRnNxMaNSqYztHV2IB2b2c5JyundFIJYNEZbTw/J9la01qFRynDgOhqLs213P1HXoimTQikzo6ZuIFT0DOqkYhFampq59u5tXPy2j/Dpb/yaWMsSeuedgFZQ98oEgcZ1k1SLY2Qn+4gkmmjvWIEytfB8jJihyR+tIjYNtoIx0wI+OlwZr+sU8+Pkp4bwK2Vae5fKVWe+VLrxtmDnQzvP/fd//9zGK6985xtt2w6EEKah9v7sCK+zKUa7BnbN3bdrz3/+6Iff/8et23a3p7tPDBauvohoptMqVyeElx+iWppE+WVAI6TT2MVlMFohBNSrJZRRJJo7kMI9arJopMQ2NuXiMLF4O0aAG4uTyHSw8Y476GpOsGZxN54XEIvGUGhkY/40VHICNxojnkrgRB2cqIsbjeIm4sTTSZLNTaSaWrAjLkrrhvNr0JSkRCG56Y77OXH5IjpaMuGCOQTKhFomyahLLJHkrocG+eC/fpurvvx9irTQNe8EIrEYQeCFn1c6CBFQLUxRLk7S3LWYRKoTX9URwiAat8s0YtQhS45nbXac+b6ZNk6BFA5SgvZqePUKyhhiiRZaehZLjFSD+3fG+/bteeXpZ5wz79Zbf3/bW9/61nKjyDDPaKNbt26d9aUvfUkbY+T+/YPv+adPfPI799z7wDlEu/TSU19imruXWV6tIkq5AerFCYxXRYiGrpxoiAwKgzEKYxSBV6HuVUk1tWPLKNPiv2JmJ+u0t9JEInEqxTEwkkRLB7VKHteJYMea+PXvfk9rzObERd3IaDTUH5nJi0T4shgQkojjEolGicZiuLEYTiSCZTsNjcUwtE0vqVPGEI85PLBzH2PZAmefciKg8bVGWhbpVBo34nD3tr18+D9/xD984fts3j/GghXnEUslsNwEtVoBYUWwpYPGozg1ROCXae9diRtJoHQ1zA2NFX5q0VhDJQ6uG2X2rlkhZtRHRUPY8aBxCsR0OhD4KK+G5SRp6lksU+lWM3Rgj+7v23naL351zZ++8Q1vuPuuu+7aDzzpRcaTZnRr1661r732WvXAnb9f9pa3vPXn/3vddX85UfATc1e9QPUuP98yQorS1CCVwjAqqGLNbAc+LL0U4cCyVh6VSoVkphXXic/SEZ71hM8o9WpAEos3k5vai7Qs7HgGv1IgFk+D63LNxjsYn8pxxvJ59Pb0UvUDAq2YXi82nQ/pWcvkdCNezd6MOD2cYxpr8YIg4Fe/u5N5czpZurCXiCVpyoS8vRvv2s6Hv/B9Pvrln7K5b5LmriW09yzGCzwsy8GrVojH2vBNnXo1R2X8AJFkMy09y8NbY+oHuXjSIA5uMX7ExPzwjoeYtT4+XLxnY3RA4FVQWpLO9IqWjgWyXMoHIwN7Wvv7+//ikksukVu2bLnloosuUg1beVIMTzxZHm7Dhg3qi5//8ou+/o3//u6DW7Z1tC84JehauMaSdlRUypPUC+OYegXRWHtpjshTQ4FqbQKMCqiUs0TicSKRlsaN18e4oGHijAywRJxKeYj82ADNXQtxE03Ui+M4doK6qjE+uI/FrQ4ffMurWXfJRUQcQblUwPN8QCOFDOnrjWsrDLOwtnC0OvR44UR/Ju5yx4N7uOO+Tbz20hfR3dXB1n1DXH/bffzk+jvYtGcY3Aw9cxZgSwtlgjDf0xo3kUbrGsoLKE4eQACZtkVEovFGeAYtxIz63eGFsEE8KqM7qEbArP83ihFDeL2NJBpNEku2IqTFaP8mPbjnLhGNRsTy5SvuPOuss9791a9+9R5jjGi8nnlajW7a4N7//vdf9tMNG340OFZ1F5/60iDR3G4HtQqVwiheZSq8ZaIxE2+ORnA1gESpgGotj+tEiUaTGC0b23AMhyunI8xMztJIYbBtl0L2ALX8FKmOOdixBPVSiVg6g6UF2YlhshO7OGfVIt7y6hfzwjNX0dWSQGtF3QffD1CNKnP2pRVC4NgS13VwHBfLtqmrgM9//ZeUymU0ko33beWB3YPUA0FL93ISqTi2GyGoawJVxZI2Qa1GNJagUJpE+xUq5SwtLYtIpNvCHFDpsGCY/sRPguzEdC94OjxbUmKMRimDlGJGodSyXeKpVpxIC6Xcfvq3/T6oVXJ2a0urf+ppa/75+utvvEoIETRal/ppMbppg7vuV9ed/J73vfPunfsmnNXnrdNWsln6lRzV7DCBV8GW4VN7sOIyR3XUQgqqlRJCCuKxFEaHngWhDvGGRzO6EK8LF/1ajkN5cpRirp9k6zySLV2oUhXpRtAiwHViDA3uojIxQE97iotOW8aLzzqFU1YtpaOjmXQ0go3BSEKt4SDArwdMlWqMF0rsGRpl665+7tu+hzu37qVU1dRrHk68meb2LhKpZmzhUNcBRguCoIhrJwgCgxQe2dG96CAglsqQaVmIsW1M4M8SctTHDJOPH5uftc/WmCOW6gkBSvsYHOLJJiLJdvCqDPXdrcf2b5OOY3HKmtNv/4cPf+pVl176wtEn0kJ7Aqr1IQZnjHEvOP+C22697dZTlq65TCU75lq1SpZabhyl6yFybnjE5rcQgiCoY9BE3GSoYM70nlRzFKM79OZMK50LDMpopG3jlbNMje0nmWon2dJB3feIuAmUqhN1Y9RrZXLZcQrZMfBLZJIx5ranmdfTQXtzmlgkQr1eZzKbY2giz8BknslCBd8H7Ch2opmW1lbikTTGBICiXq3gRpuoVHOkmtvxSiUiyQyVwjjV4ihetUg82UWyqR3LieEbD6kNYqYjaWYwuCdTXEfPzkuPmf+Z6QW5yGicaKKZiB2lkB82g7vuCmqFcWfJsmWbv/jFb7zwxS8+b+zxejzxRLzcT37yE/Xnb3rTP2/44U8+ECCDE85cZ/t+lVJ+EDkNnJqjh8UjGBciBGstywIkhyw4FPqxPdImrEgt6aL9EmPDu5HSItPWTSzWRtUro3QNBwcjBLFEGt+r4NU9ivlxqrU6QeCDXw9PzLGJuC6xaJxINIUdFUTcFMay0drG+NXQTIIaXq1EPNFK1SsRjabwanUqhSHq9TyxWAuppl6cSIJAK4wOGuq0EoTiKVVwOmT9wHROZ6bHNhpFhmrUKRJtFEYKEolOoqk2VFBneNftwfjANvvE1SdtuvG3N57f3t5e5nEMAz2uTzlt4d/75o9P++BHPvCHyWxAx9wTrFR7r8hP7g+n4rE5KDh9bKM78nTMw3u0x3CBjQnnWqVU5CeHqRbHcaIx0k0LUMbHiUQJtEIagZQWQlrYMoQVtFFIY9Am3HKNH+AHdbQAFdQAC8txkJaFCcCJxFBaYBlFrTZBUK9TzI1gWYJIPE2qeRFWxMH4GqPVkZWB0E+J0c1EkqMAFaKxC3ymlSZn7zjz0VohhBt6vEQHjuXQv/V3/vjQZufkk0/5wdatW14XBP5jXoj8eCATsXHjRmmMca9859t+vXPPaPei1WuNb6rSBBrjewgRhgopZhuTeAymPvvnzeN4NGZXaxqlDbFkE9F4Bq9apJTdj9AaYdm40TRojeNGUSpURvf9GvV6FaUagU5KlNYE2iDtxs4xAbaMhAYkBapeplwcp5IfoZQbwWifVFMn6bZFJDKdofdV/jENSzxFvaGDMI84JrXqYFXb6Pk1nnuJjS3A9yvooI7tJEg2tVuFyYGgkB07+bWXv+6O+x+8f/djJYY+ZqNbu3atfeDAAbVn955//d//ve7SBSdeHEgR2JXceENOf9pFH3YOwhxcec5jMbrH4Y8Pey8hZKPP6pBIthGNNeN7FUrZEerFKfx6BaM8Aq9OoKugBVr7CMuZjvsIFFoFoAPqlRxetUytkqOcHaVamKBeziLRROIpMu0LSTX34sRSIfCsgrDoEYflt9O7YsV0yHsKw+vMNTGHXp/Gn4WkEV3CokJMA/aAJSTGBIzu34QdSZJq7THD+7eKYqmwqFQqfX3z5s2PabfZYzK6devWWddee6365je/dsnXv/GtLyirPZiz7BRr9MAWYVsu0nbBqGM8aY/VU4knmAQc+jozLS+tkVaEWLKFRLoFaTshXFIt4tdKeNUCtUoBr5KnXp6kXpqgVpygUspTL+eoV4sEKszFHMchkWoh0dRJqnUO8UwXbiyDEFZYWGh1iDaxOPzDCDNTOT4jFDkbRIFp+DuE42ws6TI+shPHsoimm0mmumU5P6iL+cn5l1x66W3bt27d81i83aP+pI1qVRhjUueec/bmO+55cM4p573BKKPkgZ23kG7uDXunBE8C/Pdoc8DHmkAzQ/9pdCQRtkEaG4MO2RlGYwjCVpmZ1fkIofzQOKQ16zwNxgSN1l0YzkMjso6+KXHW+czkUM+Uw8xqmYmQmColTAztJepGyLTPpe5XyLQtwqsU1Y57f2HNnz//9n379l3Q0LF9VLndo84kLr/8cimE1Fe8+XUfu/f+TXMXrbhQCTciy7kh0AJh2SE6exSDO9pT/PAe0MxaAPcEb8ysRXLTX0KCFFb4RAegAg+tAoxWDXaIDDsnloWxGspNSIwRIW6n6uigjlY1lK43gGQ50+98uMs6vSf2GWdwjWtlCIFxNDjSZmrsAJYtaGqbjx8oLCHxakXS7YusTNs8NT4yfO4ll1x6BaAeLTPlURndVVddJTds2KB++ZNfnLzxplv/OppZoFp6T7Sr1QLl8iSWGwmLB/Pos2FjHnln6lP8WB9kaghr5lKYmTzLHHSyhsOQgem+8Qz1INxwfVwIrwmMCBCWS27qANqv09q+jJofhP1fy8GvVwiCGt2LThPlWl0/cP9dn77uuttbNmzYYB6NTT0qy9y4caO0bceMjg78YNOO/kVLT325ERhZLowQBArHjSCkjUQ/4oV/tDneE8lxDuJO4lHljNM51XR+dazs4+C/myO/jziMFMAhfz/a536yPuNjfZ2jnc/BHq1BCge/liM/NU5b77LQ+4kG9cyA0QFGQDLdKSqFKTU5fiC9ffsDqZGRkWtgnYSHz+0e0SobLlN9/OPrX3vv/fdf1L7gVBWNNVn1SpagViHixLDteLhYVzx5Hu6JeMGj7Xs9dvg+7OsRH4Jj3+THes5P1md8PO976H1oGNx09WoU2fH9ZNrnhkRVoRvtM90wcgu/kkcpn84Fp1gGS+3evevtf/X+958GGx5RuFs8yuIhesbpp+54cGtf7+oL/twoXZeF8WFMUJ7lTUJNN3EcaDTPMDSO9RSJ404GGBqFlCPjTE3sAgRNnfNRQTCzQyPEXhv7M7QinukglkjTt+l3anJ0t7Xm1FNv2rp58wt935eAflyeLiwehH7Tm970/zY9uHlO5+IztEDJWmmKwC/NsBYezn0fTqt5rDf+8YSMJ/Je07MGj+Q9Hu97PVne7vG877HOOfy8Eikd6rUJ/FqN5vZ5BErPECkOiVIC0ApVK6AQdMw9wRJCqP379r3gbW972zmAfriiwnq44uFLX/qSmZyszP3UJz/6o8mikQtWPE+qekWUixMIdHiSlRzaaBzXCWcHxGPCCZ8RXu3YN77h8aYxK2GeeDX9JOauT7iUmvW5DWBhk5vqI9k8B8uJY4yauQKzjXU6/1OBjxONE0+1UytN6sLksKzVvaaJiYkfb9myRR7LEI7p6W6++WYJmDdf8ap3PLRzd3Tu4nO0LRDVSgEVhIxWIQX1agEpDLYbfZgc6rnjmX5IIfC8PFK6RJNpdMPgpmn9hzyY00NAGPxaGWm7tMxZbQVGmJGB/S//2Mc+tpCHWcoij5XLbdy4Ue3evbtj0+aH3unE2k1T51zLr1ep1wvIBgXGaB/fLzcEWJ2GVu8z++l+POFNPEYs5KmAgp6s1zzW6wghqVamcJxoOM6LQYpDuXdmFnW/sSUN5VfxAo9kU6+IJVrVZDbn/vqXv349QENT8NEZ3eWXXy4Bc9VVn3jnyPBYpmvR6QrhiGq9iFE+SOfgcIdfC8t3ac2M3R1E6xvDNkY85TfliSLxM1/HApafipB5rPd9Ch/U2SGyAUwipIWq16jms1huDGE06HCEMWwei0Ogpek/W0KigjrGr2NHorR0LxSBNgwMD77ahO0Z9aiMzhgjNmzYoI0xzXfddeuV2s6YlraFUgcVfK88C8cyKOWHjfSZ2YLnjmfbEc7WWeSm9mE5Lm4kFjaWGhMCxhzENY9wFlJgtEEFFbQJSLfOtUCYcrF44vve98GVoeM6MsQe8Y0LL7zQAsxfvv3t64YGhzu7Fq5RQkqpfQ/tVTHKa0zBa7QOGkm2bLSVJA/3QD4Z1d4RH0AK/i+ur3xyPJ7AsiXl4ghetUYs2YywnFB+QxwalaYHo2YwPkJcViCpexVQPm6ig2iiRZXLReuue++4YFZt8PBGt3HjRm2Mse6947YrPR2hqX2eCJSH55UwRlAtFxva8aZR3YQUGCGsxliqOQoAax4TMPyon1FjU63W8QOFbdlIYyH04yCmPc4w+sTv/NP0vtPFgACtPMrZQZxICsuJhbfqsPOZps9Pz/7O1PW6QQKt+ygVYDku6UwHfqCZGB17npSSo83LHnKHGtiK/sIXvnDW4NDompauJdqypKWCKrVqKVxd1GiKHzyBBmj4NIRXpRUrliwkFXOZnJxCoWGWGOG0Z7Us6+BQynHgoZ4Mz24A27IpZodB2DgxF8eJNPLy2UM7zPz90LbZQQMM06wAgSbZ1CEBysXiWUop92h53SF3YWxsTAgh+N3Gm15aqgaiuXOZ1srHrxXRfj0cwm8E+9naGSHd+Vjs1Kfo4ktJ3a/xifV/w/W//CYf+pu3E4tYoSZd48Z4nke1WiWfz+P7AaVSaeZyHs3jCgGWZWFbNs/UiP2kRAtjkNLCq5Wpl7M40RiWHZsZojIcgY48bFGidDirjNFE0q1SIEypVFzwnne8Z9k05ntMo9u4caPSWlvjg0OXGCdBNJ6UaIXnVcGoGTqOVgHCqAb5ohFmpdvo3x1asT6RrsRRn3AjEUiUD4lElBOWL+ShXXu5fN3L+NiH30Mhl8WxLArlKu995xX8+2f/nr9971+wYO4cXvmKFyOxqNdrDU030aAigWVbKGOYnCoyPjGJ76tw/oGjDIWHkPwsjbinNm99cq1WYNAIaVOYGsGNJhDCxnFcjLBCYulhqdFBmIQZ0aFwaEwxvc5KKw9jDJFEE5FEkypXy/KeTfecc7S8Th52NQ3g7t6ztzuRaUNKC6V8gqAeNn4bYTQI6qFy0Mzu0xAyOdrFfrLyuPB1QszMtm2UUrQ0Z2jJZHhwyza8eomTTjoBJ2ajtMKxLZ5/0bl867u/YH7PfD7wvit4yYsvpFTI0tPVQTRqE3gB9VoAlk02WyLqRnnHX76WK6/8M5rSaabGs0gspLSwLasxqabDpNo4FIuVQybon/y89amoVg3GcqiXJ1BeEduOI4WNlICQRzl3M9N7FdMR4jDYRWBQgQ8YHCdGMtMhgkAzPj7+Asuyjsjr7Fn5nNywYYP6/Oc/f4aw7Q4nmtZCuFIpH7QHwsIYiWXZ+H4NYSUOvrE4SAc3TzHAqYymnK9QrdU4e86JAAyPTdLe2sEvf/M76r4mISTNTSl0oHEdh3RTknwhy9DgPt7yF6/hjFNPQtoO27duw1OC//76D3jFJc/jxS88n2qpws233E13Z4aTTlzMLbfdh+eD51WxpCSRjIERKOOz9sIz2LplN/W6h2VZKK3CB3Cmf6sfMeV4+DbcU2N2DjbZqVHcWIog8InGUxjtNIzqyFOeDQ5P/1/M8nog8IM6UQMGm0S6U0wM7aBQLJ0XBIErhPBmObUjq9df/vKaplyuIGKRlDFolPIQRjYQHY1lxzB+DUOoqWIaaLYRBiPk42L8PrqLHqozJRMR1l12MV/90qd4yQvPpe75GK24+da72bRlBz3d7ZQKVXo628kXi8yd38XPf/UbHti0lUQqw/Offx7/+JkvkIy5SFty7pmncvFFZ3Lx8y8gmYgRT8b5ydXX4nma//jcx1l7/lk8/4Iz+djfv4sXXHQOp558Ev/8jx8kGY/wgrXn4jgO2WyObKGI38ghp7JZarUqCHeWSh1PWRR4LNdZSEmtkkUpH2nHoaHiKS0bDiNwHDVVMGZGYdRoM6OAZaaZ11oTS7cIEKZULva86U1vOrGR14ljQibtXe3dUkjsSALMLFS6gdXYtkPghzd6htM1zaJ9CnMZaQkqpTIf+/v38G+f/RAD+/vRBmr1Op2dHeztG2DV8gXcufGnnLZmGT1drQS+4Gtf/xHf/NaPWbZsKQiBhYVjuTQ1t3DNtTcTiTi8+x1v4stf/S5/88HPEPg+V//0y6w8YQm//NVNbN+yi7/7uyvZt6+P973nrZx6ynIWLpzLGWecBNoQcWw++8kP8Q8fuJJMIslJq5bwp5e+mBVLF+LXazM54zOlCJFY5LODRGNpAr+O60ZDoZ6Hqexne+ND/zztDgRKB2jtYUxALNkinEhK1aoV+cADD5x+eEtsBufYtm2blFKaOT09f7d7X//K9nlrtCVd6dXyqMALrRmDJSTlUhbHdpFCUCtNkmzpIZ7uoF6abIgZikf31D3GAsOyLR64fzMPbt5BvlrlhJXLWLxwPvfeu4mzTj2JaCzGT372K+6+bzujk5Pcd+8m6kGdeDxBR0crt9xxP0sWzWPx0nkIIfnaNzbw5298Ff39Q3zz+1fT3t7GA/dv5pI/eT5Iyf0PbCMWc+jqaOfLX/kRFz7vDLRS3HjTHxgbH+UFa89n1aplHNi/HzvicNqalVxw/pksmNPLq1/1UsYnx3jooT3EYrFjVMvij2twUuLXyxSzY0QTTaigQizRihZhLsZhXvlYsy2HAi9hpNNG48biSDuCbUUpTh3Q1VJWZjItxVxu6qeNtpg5xOgIp1FMxLb/NFepr2qfc7IWKFmvlTBBHcLF4whp4ZWz4eS8HaFanCDV0ksi3U6t/OiNbvqJOfrPNqpgZgmyNYqVQrnClm27eHDTVu69dzMPbtlGqVblmut+z5e/8j2S6WZyhQIDAyNkcwVsx0FKh/sf3Mb4RI6bN97Opi07uOG3t6ICnxc+/zw+++9fpe75vOH1r+Blf3IR3/nhzylX6px52okcGBriwgvOpb2jiVQmSdR12L2rn57uDlzXobOzlX/6zBeYN7ebRfMWkMm08OH1n+XEVcvQyuKmW+4imYiGEj9aHN6G/iNWrAHCdimNDyJtpwEP2Vh2FEtaSNs5ZhpwbBo+B0W2jcK2Y9jRFEK41MqjFLPDIhKJWLVa7UtKKXNEIQForZR9ypqTFzuRNJZlCe3PUhJqyPNJaWM5EZTv4UaTB9Upn0Dz+VH+dLgr1bGJRByESFEoVvnN/94KGCw7SiKeYueOHRRKJRKxGFLaaBNupY7FYjNPfKlcJ5vL85Y3/Sk79+5l85ZdtLe18e9f/BpSugRBQCLm8sADWxkcmQB+SGt7hjvueYA5PZ0sXr4IYwz3PriZlfUVvPev3sqqFcu5+fd3culli8FIFi6Yx80b7+DFLzyPXC7Hvr0DOI7D08I1FAphHIxnqFSzNLXOoVzKE89kMCZAytgRReDhBc7sGQpjpo1tNhAv0b6PMAqNIppsEwDlcmnuRz/60d4Pf/jDgw0murEbLygaQncdxWJxlRttBmHkTMOhIbNqNfR2rUiMoBZOtButZkDFp/4hDhPv8KFROI4kEkmGo4FGY4xicqKIsCUCEeajYhrA1rPyQ4tUMsGunf3c+NvbSKdTKK1IxJsQQiFEBKUNe/YcIBKJ8pv/3YhSikgkwT1iK9IRRKMxarUKN954Oy+55Pn89pZ7GBvLkmxuQmnBRDbLZL7AWWeewtbN29m96wB2xDwMifspBJMBx3Io5A+ELJIQXUdYEQgakckc3REc3oUI5WSP2gTH92porwaOIJJoE1I4Ogi81J133rscGGywl9R0eJUbN2402Wx22V133X1lonUB8XibQGu8Wr4hi9DgUDUA0Vp5EieaoFQYp6lrKdF4hno5C0ofrE+eiBUeSwbhMFjxIDRhZnVGGrIWwhwDYDbYtsX+A0P4vgql/k0o0SWMaNiFxHFCXC4SjRCLRrDtsEEOEs/zEMJCacOddz/A0MgYnq+5/Y57sV2HG278PcOjk+zfP0Rf/0Ao1fU0FA7hpQx1knPj+0imu6l7FRw3irBdQOO4MYR1mOSFmZbzPsgwESK8vlI2lnQ38kQwCGnje2UMFtFoM1Ja5Eb3KK9WkpmmpvsHBwfu3LZtmwVoexZirA8c6FtV95TsSLYro4xlGkrnM9QWwil2x4mAkCjlh/9i2ZhDrOyPRVkXRwU/mXHQ4mFvSCwebZBRD56rbpB9Qv3hxs/OWgZspslA1rQWsKCttWXG+KNRFxX4jdeBoeExLMs6avfij4XLCWnhVXMYLXAiDuVynUgiPbOxkWNghdPXT08vihHMDn0IEYpGioY8htE+WnkN9kqEWLKZWmWKfD570hEdiY0bNwKC8dHx5ws7TjTRZoxWh0irMit3s2wXy3EI/BoSgSXtcNEHTy88cKwW1LG+H+JMs8DtR9HCOsKQDSil0DoM70oHocds/LPrOn9UgztivNCAsCSlwiiReDoU2ZYgbLdx76wjNvscbn/ikO/JRv15sJgQCIQO26Na1RuG7hJPtQqAfLF4wmxSp5z+izE6ni9kz5V2AunY0giJmOEciBkOHQ0qk+Um0PUiWCLkYKHhGTKA+ET7n0+8fyqe1C7M4y3ETCN3077CqxSJxpLUq2XsWCpkBjd2cBzUgZ7FLJmhXOlQBkNMAxziMAbxtJfU6CAIi4mG74kmWyRA4HlL77333nR4OcxM+WEAZ3I82xlJNCOxRNjAPXgSxugGcVNhtMJ149TrdYSUWHaEQ2UXnt0DOo+/U/DHZdo8clocQly1yiTCcpAyhgqq2G50RkRIWtbDn7EwRxA4j/SqoWK7VmFHIggqYS4cSwuENJVKpflzn/tcL4SjEHLDhg0S4Ctf+c/TDTLhJNJaai0KU/2NbXty1kNwkDFs2Q7SiWKUwRIus7C/p93LPREA9tnEQn4kwNk0HEatNEkk1kw9KCCFjSWdmbRCTgshHsNVTueqBxklRzc8rU1jBBW8egmtAiw3hh1JaM+vW3v27JkHIX1OfuYzn5EAt2+846xStWalEm3a98vUa9mQtjRLNMaYcH2S1gqEjRuJg7RmyYYemdw/6QMlujF5bx6dtMMfU+rhmWSIAjCWQfk1vFqZSCJF4JWwnShojTAaYUzI+G6kRtO0NNGgpmkpUIF3mNNRKBWglI9uDO+Y6ftuNEJaBLUyRgVI2yUaTRodKJCRE6frB3nvvfdq27bZtGXT8wKixJMZUa+XMUojhNVYviZmVj9orWdWWBqlkJY9IxP/xwGhxLPK8zytfVZhUSllEXYEaQkCL8B2HJQKmB7JCTcqmsPrXYSUofi3V58phA5Ntw79HW1MwxkJfL+G1j6W5RBNNKG1IZ/PzZ2+gRJQQ7uHuiemJs6JJ7uQjiuDoAoqVNeeXdVNv1EIujYWsomwmtFGMZvWfLhUw6P1eMdSOprZF/EwGrqPpJL0aN7z0Xrno73H432/pwoqkUZSLU8RTTSjVEhKtSynURTMou+bo8BOwuBVi9gRd2Z11fR90FofUiULKfHq9XA0QFpo42PwsawI0USzMIDv1xaFfMQGTvfPX/jkaeVKLd3U3a601pb262CBYFoJXGMCNbtfhiVchA4TVaRA6FAP49AnXs6sgny0VKeH9xYP/zoHYQJ5DO9oDgWfn0BIfjTvdZCAY55Sj3i01zPSQnkVdL1OtLWJeiWLdNzwfs0QcMMJvhmDEgAKYUkq5SJSSmxhz6waNbNXRplQWFITLssL/BJYFhqF9jwCFa66j0YzAJQKhdYgCKQQwkiEYP/g8Ll1X5NIt5jArzdkI8CaSRzVLPS/EWeNONh3NdNgyTMx9ImjVJfiKXgP8Ud6r0dlhUhpUasUkHYEISWBV8d2oofuFJPWYQ9kqDFs/IB6eTJcC2pmy/wfbEVOi7BPb7D0vAq2EyUIPNAG5dfBGNxYsrEa15rTAPi0dGyb8fGJU5AR3Hga7ddCVFkz40aPENCb6ekZeG7m9GHC6NMH7QigXilgR5Mh6QGNbUUO2bhtSXmEiI4tBMXsMG40Bcad2ek2Y18zqYFsDP+HGK7WGilsgkDhOlH8cgk/CJBuFISgUinFrrnmmiSAtG2H3Tse6nXiLUjblsqvhjEcA1ohZzR4Z4kgG9MQQhYzi2wNgidPRlcclDN4olwgYY4+W/pEXt+IQ+QgHhHXM4d9ntlyEk/GZzyKtYc6MzUikQTKVwgRdh7E9OJhITAyHNIJ1w1opLSplKdQGNxoOswDZ1abHgSI5SwPKSUIpcMRREsg0GC7aKPx6iWkjAvLiuBYVutDex/qBJBaa4qlsh1NZBBCEvh1tAmXk4VPiDm4acnM2jmKnhncYYa6bh7H9Xl0Eq1PJKF+9CHxqaqgxTHfzxjRwDifTKOTIdQB4YLkwENaDSKDkTNzHLPDqkBiVI1icZRYog2twpTqoC6knh29Z+ArKSyUV0UKG22Y+T9oAr8aTppF4hSLJX7zm9+Eu2B+/4c71rS1tS2yrEg4NK/CgkEpHxV4h5XIYVdiuvqxbAulvFBqAhGKPT/GKvLYRM7H3o468v2ezIfgqYFMHlYa+QlgmioIxwm0JQj8KtKKNbb/6FlLXQ7Vm8uN7ycWaUZaIhwrnR62anidwz+fEBKBRd0rIaUTrg0VDmgFRhMENYRtCWlFtJCS3vbeBQDye9/4ds9kNheJRONGBb4IGvvn0YYgqM/IRYlpmsv00nsTIGwHo3x8FSAljX1gZoa/Zjj49dhuVmOt5qP43aPlONMh48h1f48sbPioDEccS7N41ns/6t99soUWp6GN0HkIHd6ukMYUXtGQhGk3KleN1Zj0N5YkksiE7G95sAM1jUQIYc+scgrXyocFZVCvYtlOmJaJcFE0BrRfxwhw3LjxvTp79+5tAZA7d26v12q1xm6sAK2DhjaJxKuFEq/CNLRmZ/bDhzmd5TgYpQn8EKM5crjD8PhbY0/G75pH+f0nK2Q/mtc3T+LnfLjgH3ovS1ggJNJqAPhmOvmXGGmQdpRKeQKvWiSV7kbpMP+bpncdil8eNkIgBEp7oVcVVoj7Tedf0sIoD4wimmw2gdZMTeWWAsjW1qa0bTtYlmuUUg0uvQWWJKiXGxYtDn+OAIMlrbAt4tfCPVqSY2ytPlYoMY/taxYgeQiFxxz9Z/9YveAnonf81MDCB6+30iosIGZGtwRaGKQlkbZDUM9Tyo0Tb+5BKQ3CZ3pb+uFTYIemIAYpXTyvgiVl2NO1bGYWvwBae6jAI5HuAKBery63LAs7lUqfSzjFboyuz5AfLemEU9uzF/wSAsYCgVGm8WEkyqsyrdxohGhIE+hZCFA4kCKwkAKMFMiGrNghm5A4ZD0Ix9wP1qBgz1SPDWV3prldiPBpNiG4rZU+CIBOL/Cd9tgNwMlMP7xPFq4mnlzlzEdvzNOjA41roDVIe/aMF7JxbqpeIz8xQDzTiREC2VixFebth0et6cXHFrMXvwT1CsKS4Zp2K4JGNzIbEcpN+B6xVKsU0qZcKq2ybQc7l8st8oMA27Hw6/XGSRqQNqoRNqf5sjQ4dg2XNvN/oXxiboq6E0Va5ZlCA3NwkENrHRYnvkegfZTvo4IgJD2ao4ee2apQZrq3p/zGhLk5lL03u10mBAgHy40Ri8eJxZM4ThRhWdNleFjaTysPGYNqgJ5ixlMerVid/WiIxxmC/zh4uJByhmYSDlIf5GMYY6N8n0q1RDTehrSiYLxGNzbUkj5Y4IlDhnIO3o/wwQ3qVZxIJOxKCTlz7UzjSfb9Csl0m3CjaQrF/NyPfvQj7fb42FhgGqroqsE+MAYsJ0K9Vpqhcs9WTReiIZojbGwnyvjIHirVMtorg18N1Z2MmjEAx7JwbZuIK0inEsRjURKJJK3NGTKZFPF4AkuGoSCkTpkZI5ueIpdS4DguEdcllUrhug6uYyGtUGfEtsKLEyhFpVZjYjJL/4Ehdu3az8DIPrLlOr6WWMIFywLHxrYi2JaLa4fjlLbjImw5Iy12qPttFEiYUMfliAUghxYhUopZDXJxFIMUj6m4ergq/2EN3zCTz02L4AgRXicnEg/vOz42cmb71KHvNXva70h1daMCII4RIWQmjGgUVAZhIAjKILtFPNlmqvl9LVu3bl1t1+qeNEJgIUNlTRECvo4dpWp8AhOEMb7BpzemEa9NaNmB53P+uYt597veivEDVL2M7diNnwVLWuHYoBshEnGIx2O4toNtW1gzY2zmiBB66AjcoavAD1ap055qNo40vaU6fLFqtcbExBQDw8OMjI2TzebJZnNM5goU8kUKpTLFao1SMUspW6NSD9Cq8Z7CAWGFlZ4dCulYVrjR2rIdLNvGtWykZYcq5I1keybv1Q3GhjEoo9FGH5JvhlsazKyJkmnvZB7REB/eAKfXpWuEJZDGmiFohLd3dp6nkbPkJGZ7uEPfxxzEbBvzz7VyEYlASPf/l3YmzW0bQRT+ZgFAylIUKXJiJ5ccbOeWU36I8/ejSiVKybIkSySIjVhmyWEGAClLXspnFsDisKvndfd7/VA6nRx1HD5axAv8EByyD45OXXF3rq6urn/X1horVYoQOlJeQtCNJbW1HaleRGvtcERh9KbCFewsr1+/4u3bP7k4/4tydTtVsWLnsFzMYM45urajHcmBn8U+TzVwxYNRk9truM4ZR3J2dsLLlz8G8BzVSyML2hjLYCxd11NVDas8Z7MuyTcFRVmyKUuqZkuzbamrLVXVUFYNRbWmLBvybmAwwT3bxz9XCB00CDKs4EqTDJ0mQVuiE5TKQpB6O8WgiTPuoEh7mp/4dVMdFzOXmDDynu5lNCANgHteCeb3bamYnp0ZPgJB1xQonSKUimwj/4CrIgOEMh3Lox9wznNz8/6VVlIcap3gpcbbAeUkVoGTAcO5vkXqZ1gGrLUzlhMCrTSIhHx1z/rDLdu6pu26T2683K/yxFcH3dPXjHz0u7z3DIOh74dJ1eVjPylQswRKwCLJeHZ2yC8vXqBUGPUIJEg/LYJ01uOsw5iBbTdQNQ1VWVFUNUVZUtU1dVVTVVvysmS93pDnBXkRPy9aqrajMx7jBQKNShboNCPLUtLsgCRZBJnjuPnJucjcnb0b9oUyj53YbKw3kjKkn591jxY9Ym/G+rAJ/NHn3uFsT7I8QgoZIRc7XQYR18tazLAlPTgRCEld17/p9f3qD5kskVJKZwMLVPgwV1XpMrAFpMQbCZhI1JMIL5AqXD9h649EqC+bIjw+9RFfNHJ6cnqxa0osxUcBOnsf7FxB8VrxwmO8Zegtopc7JsQzc3rUfwZDj7Cx8/T4mOcn30eJoZpU7xP+jRizMwPbtqNpthRFwSrfcPvhjqvrGy4vb7i/z7lbb8g37ylXPZ0BVEKSLUnSBVm2ROts4hRNcN6Na9Dl3uFOZVYMuMB1nD0hpjOZqvxZBxNbsQgR3jt63EoppiWYUib0fY2UQWoolNpbB+vjbxc4rDd459HLQ6GSJW1d/qq7rvspSb8jQo+QxAiDaKVTzOgTIRQj8c+7MOh1kR4zDLbAcyCE0N9WtH1Lu+LzOMjvNDtdGBSODZaQPaK56zj+4VPrMrzHGMMA4PtHwX94ZxCoa604OTnm+fNT3kgVs6nEO4ExlqatKMqK27s7/rt4x/nf//LPxRWX7264vb+m7Rw6SUnSZciG2QIlF3ipH5AZdvCYlHjnkCJW/sxb1Ue9q/NuupnGvdGT+ZwMQTcxh92s9+vaGqVj0pEKb3dw5M4qMSnA9gZ1qIUMAq6f/wdTMDAW1RMhEAAAAABJRU5ErkJggg=="
+        alt="Estudiante"
+        style="height:170px;width:auto;flex-shrink:0;align-self:flex-end;margin-right:-20px;margin-bottom:-40px;filter:drop-shadow(0 6px 20px rgba(0,0,0,0.4));">
+    </div>
+  </div>
+
+  <div style="margin-bottom:16px; font-family:'Fredoka One',cursive; font-size:18px; color:white; opacity:.8;">📚 Your Classes</div>
+  <div class="classes-grid">
+    <div class="class-card unlocked" onclick="showLesson('animals')">
+      <div class="class-number">CLASS 1</div>
+      <div class="class-icon">🐾</div>
+      <div class="class-title">Animals</div>
+      <div class="class-desc">bird, butterfly, squirrel, frog, duck, lizard, bat, hedgehog</div>
+      <div class="class-stars" id="home-stars-animals"></div>
+      <div class="class-status" id="home-status-animals">▶️</div>
+    </div>
+    <div class="class-card unlocked" onclick="showLesson('verbs')">
+      <div class="class-number">CLASS 2</div>
+      <div class="class-icon">🏃</div>
+      <div class="class-title">Action Verbs</div>
+      <div class="class-desc">fly, run, swim, sing, jump, climb</div>
+      <div class="class-stars" id="home-stars-verbs"></div>
+      <div class="class-status" id="home-status-verbs">▶️</div>
+    </div>
+    <div class="class-card unlocked" onclick="showLesson('can')">
+      <div class="class-number">CLASS 3</div>
+      <div class="class-icon">✅</div>
+      <div class="class-title">Can / Can't</div>
+      <div class="class-desc">It can swim. It can't fly. Can it run? Yes, it can.</div>
+      <div class="class-stars" id="home-stars-can"></div>
+      <div class="class-status" id="home-status-can">▶️</div>
+    </div>
+    <div class="class-card unlocked" onclick="showLesson('numbers')">
+      <div class="class-number">CLASS 4</div>
+      <div class="class-icon">🔢</div>
+      <div class="class-title">Numbers 1–20</div>
+      <div class="class-desc">one, two, three... fifteen, sixteen... twenty</div>
+      <div class="class-stars" id="home-stars-numbers"></div>
+      <div class="class-status" id="home-status-numbers">▶️</div>
+    </div>
+    <div class="class-card unlocked" onclick="showLesson('listening')">
+      <div class="class-number">CLASS 5</div>
+      <div class="class-icon">🎧</div>
+      <div class="class-title">Listening</div>
+      <div class="class-desc">Listen and respond. Dictation practice.</div>
+      <div class="class-stars" id="home-stars-listening"></div>
+      <div class="class-status" id="home-status-listening">▶️</div>
+    </div>
+    <div class="class-card" onclick="showScreen('exam')" style="background:linear-gradient(135deg,rgba(124,58,237,.2),rgba(37,99,235,.2)); border-color:rgba(124,58,237,.4);">
+      <div class="class-number">FINAL</div>
+      <div class="class-icon">📝</div>
+      <div class="class-title">Exam Simulator</div>
+      <div class="class-desc">All topics. Real exam style. Get your grade!</div>
+      <div class="class-status">🎯</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">⚠️ Words to Practice More</div>
+    <div class="hard-words" id="hard-words-display">
+      <span style="color:var(--gray-400); font-size:13px;">Complete exercises to track your tricky words!</span>
+    </div>
+  </div>
+</div>
+
+<!-- ========== ANIMALS LESSON ========== -->
+<div class="screen" id="screen-animals">
+  <div class="lesson-header">
+    <div class="lesson-icon">🐾</div>
+    <div class="lesson-info">
+      <h2>Class 1 – Animals Vocabulary</h2>
+      <p>Learn to recognise, read and write the 8 animals</p>
+    </div>
+    <button class="lesson-back" onclick="showScreen('home')">← Back</button>
+  </div>
+
+  <div class="phase-tabs">
+    <div class="phase-tab active" id="atab-1" onclick="showAnimalPhase(1)">📖 1. Learn</div>
+    <div class="phase-tab" id="atab-2" onclick="showAnimalPhase(2)">🧠 2. Practice</div>
+    <div class="phase-tab" id="atab-3" onclick="showAnimalPhase(3)">✏️ 3. Write</div>
+    <div class="phase-tab" id="atab-4" onclick="showAnimalPhase(4)">🔗 4. Match</div>
+    <div class="phase-tab" id="atab-5" onclick="showAnimalPhase(5)">📝 Mini Test</div>
+  </div>
+
+  <!-- Phase 1: Learn -->
+  <div id="aphase-1">
+    <div class="card">
+      <div class="card-title">📖 Meet the Animals! Click to hear their name</div>
+      <div class="animals-grid" id="animals-learn-grid"></div>
+    </div>
+  </div>
+
+  <!-- Phase 2: Multiple choice -->
+  <div id="aphase-2" style="display:none">
+    <div class="card">
+      <div class="card-title">🧠 What is this?</div>
+      <div id="mc-exercise"></div>
+    </div>
+  </div>
+
+  <!-- Phase 3: Write -->
+  <div id="aphase-3" style="display:none">
+    <div class="card">
+      <div class="card-title">✏️ Look at the emoji and write the animal name in English</div>
+      <div id="write-exercises"></div>
+    </div>
+  </div>
+
+  <!-- Phase 4: Match -->
+  <div id="aphase-4" style="display:none">
+    <div class="card">
+      <div class="card-title">🔗 Match the animal with its Spanish translation</div>
+      <div class="match-container">
+        <div class="match-col" id="match-left"></div>
+        <div class="match-col" id="match-right"></div>
+      </div>
+      <div id="match-feedback" style="margin-top:12px"></div>
+    </div>
+  </div>
+
+  <!-- Phase 5: Mini test -->
+  <div id="aphase-5" style="display:none">
+    <div id="animals-test-container"></div>
+  </div>
+</div>
+
+<!-- ========== VERBS LESSON ========== -->
+<div class="screen" id="screen-verbs">
+  <div class="lesson-header">
+    <div class="lesson-icon">🏃</div>
+    <div class="lesson-info">
+      <h2>Class 2 – Action Verbs</h2>
+      <p>fly, run, swim, sing, jump, climb</p>
+    </div>
+    <button class="lesson-back" onclick="showScreen('home')">← Back</button>
+  </div>
+
+  <div class="phase-tabs">
+    <div class="phase-tab active" id="vtab-1" onclick="showVerbPhase(1)">📖 1. Learn</div>
+    <div class="phase-tab" id="vtab-2" onclick="showVerbPhase(2)">🧠 2. Comprehension</div>
+    <div class="phase-tab" id="vtab-3" onclick="showVerbPhase(3)">✏️ 3. Write</div>
+    <div class="phase-tab" id="vtab-4" onclick="showVerbPhase(4)">📝 Mini Test</div>
+  </div>
+
+  <div id="vphase-1">
+    <div class="card">
+      <div class="card-title">📖 Action Verbs</div>
+      <table class="verbs-table">
+        <thead><tr><th>Verb</th><th>Spanish</th><th>Example</th><th>Hear</th></tr></thead>
+        <tbody id="verbs-table-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="vphase-2" style="display:none">
+    <div class="card">
+      <div class="card-title">🧠 Complete the sentence</div>
+      <div id="verb-comprehension"></div>
+    </div>
+  </div>
+
+  <div id="vphase-3" style="display:none">
+    <div class="card">
+      <div class="card-title">✏️ Write the verb</div>
+      <div id="verb-write"></div>
+    </div>
+  </div>
+
+  <div id="vphase-4" style="display:none">
+    <div id="verbs-test-container"></div>
+  </div>
+</div>
+
+<!-- ========== CAN LESSON ========== -->
+<div class="screen" id="screen-can">
+  <div class="lesson-header">
+    <div class="lesson-icon">✅</div>
+    <div class="lesson-info">
+      <h2>Class 3 – Can / Can't</h2>
+      <p>The most important class! Use "can" and "can't"</p>
+    </div>
+    <button class="lesson-back" onclick="showScreen('home')">← Back</button>
+  </div>
+
+  <div class="phase-tabs">
+    <div class="phase-tab active" id="ctab-1" onclick="showCanPhase(1)">📖 1. Explain</div>
+    <div class="phase-tab" id="ctab-2" onclick="showCanPhase(2)">🧠 2. Build Sentences</div>
+    <div class="phase-tab" id="ctab-3" onclick="showCanPhase(3)">✏️ 3. Q&A</div>
+    <div class="phase-tab" id="ctab-4" onclick="showCanPhase(4)">📝 Mini Test</div>
+  </div>
+
+  <div id="cphase-1">
+    <div class="card">
+      <div class="card-title">📖 Understanding Can and Can't</div>
+      <div class="can-visual" style="margin-bottom:20px">
+        <div class="can-box can"><div class="can-icon">✅</div><div class="can-label">CAN</div><div class="can-sentence">It <strong>can</strong> swim. (puede nadar)</div></div>
+        <div class="can-box cant"><div class="can-icon">❌</div><div class="can-label">CAN'T</div><div class="can-sentence">It <strong>can't</strong> fly. (no puede volar)</div></div>
+      </div>
+      <div style="background:var(--yellow-bg);border-radius:12px;padding:16px;margin-bottom:16px">
+        <div style="font-weight:800;color:var(--navy);margin-bottom:8px">📋 Structure (Estructura):</div>
+        <div style="font-size:15px;color:var(--gray-800);line-height:2">
+          ✅ <strong>Affirmative:</strong> It <span style="color:var(--green);font-weight:800">can</span> + verb → <em>It can swim.</em><br>
+          ❌ <strong>Negative:</strong> It <span style="color:var(--red);font-weight:800">can't</span> + verb → <em>It can't fly.</em><br>
+          ❓ <strong>Question:</strong> <span style="color:var(--blue);font-weight:800">Can</span> it + verb? → <em>Can it run?</em><br>
+          ✔️ <strong>Answer yes:</strong> Yes, it can.<br>
+          ✖️ <strong>Answer no:</strong> No, it can't.
+        </div>
+      </div>
+      <div style="font-weight:800;color:var(--navy);margin-bottom:12px">🎯 Examples – click to hear!</div>
+      <div id="can-examples"></div>
+    </div>
+  </div>
+
+  <div id="cphase-2" style="display:none">
+    <div class="card">
+      <div class="card-title">🧠 Put the words in the right order</div>
+      <div id="word-order-exercises"></div>
+    </div>
+  </div>
+
+  <div id="cphase-3" style="display:none">
+    <div class="card">
+      <div class="card-title">✏️ Answer the questions</div>
+      <div id="qa-exercises"></div>
+    </div>
+  </div>
+
+  <div id="cphase-4" style="display:none">
+    <div id="can-test-container"></div>
+  </div>
+</div>
+
+<!-- ========== NUMBERS LESSON ========== -->
+<div class="screen" id="screen-numbers">
+  <div class="lesson-header">
+    <div class="lesson-icon">🔢</div>
+    <div class="lesson-info">
+      <h2>Class 4 – Numbers 1–20</h2>
+      <p>Learn to write and recognise numbers in English</p>
+    </div>
+    <button class="lesson-back" onclick="showScreen('home')">← Back</button>
+  </div>
+
+  <div class="phase-tabs">
+    <div class="phase-tab active" id="ntab-1" onclick="showNumPhase(1)">📖 1. Learn</div>
+    <div class="phase-tab" id="ntab-2" onclick="showNumPhase(2)">✏️ 2. Write</div>
+    <div class="phase-tab" id="ntab-3" onclick="showNumPhase(3)">🔗 3. Match</div>
+    <div class="phase-tab" id="ntab-4" onclick="showNumPhase(4)">🐸 4. Count</div>
+    <div class="phase-tab" id="ntab-5" onclick="showNumPhase(5)">📝 Mini Test</div>
+  </div>
+
+  <div id="nphase-1">
+    <div class="card">
+      <div class="card-title">📖 Numbers 1–20 – Click to hear!</div>
+      <div class="numbers-grid" id="numbers-learn-grid"></div>
+    </div>
+  </div>
+
+  <div id="nphase-2" style="display:none">
+    <div class="card">
+      <div class="card-title">✏️ Write the number in words</div>
+      <div id="num-write-exercises"></div>
+    </div>
+  </div>
+
+  <div id="nphase-3" style="display:none">
+    <div class="card">
+      <div class="card-title">🔗 Match the number with its word</div>
+      <div class="match-container">
+        <div class="match-col" id="num-match-left"></div>
+        <div class="match-col" id="num-match-right"></div>
+      </div>
+      <div id="num-match-feedback" style="margin-top:12px"></div>
+    </div>
+  </div>
+
+  <div id="nphase-4" style="display:none">
+    <div class="card">
+      <div class="card-title">🐸 How many can you see? Write the number in words!</div>
+      <div id="count-exercises"></div>
+    </div>
+  </div>
+
+  <div id="nphase-5" style="display:none">
+    <div id="numbers-test-container"></div>
+  </div>
+</div>
+
+<!-- ========== LISTENING LESSON ========== -->
+<div class="screen" id="screen-listening">
+  <div class="lesson-header">
+    <div class="lesson-icon">🎧</div>
+    <div class="lesson-info">
+      <h2>Class 5 – Listening</h2>
+      <p>Listen and respond. Train your ear!</p>
+    </div>
+    <button class="lesson-back" onclick="showScreen('home')">← Back</button>
+  </div>
+
+  <div class="phase-tabs">
+    <div class="phase-tab active" id="ltab-1" onclick="showListenPhase(1)">🎧 1. Listen & Repeat</div>
+    <div class="phase-tab" id="ltab-2" onclick="showListenPhase(2)">🎧 2. Listen & Answer</div>
+    <div class="phase-tab" id="ltab-3" onclick="showListenPhase(3)">✏️ 3. Dictation</div>
+    <div class="phase-tab" id="ltab-4" onclick="showListenPhase(4)">📝 Mini Test</div>
+  </div>
+
+  <div id="lphase-1">
+    <div class="card">
+      <div class="card-title">🎧 Listen and Repeat! Press play, then press Repeat.</div>
+      <div id="listen-repeat-list"></div>
+    </div>
+  </div>
+
+  <div id="lphase-2" style="display:none">
+    <div class="card">
+      <div class="card-title">🎧 Listen and choose the right answer</div>
+      <div id="listen-answer-list"></div>
+    </div>
+  </div>
+
+  <div id="lphase-3" style="display:none">
+    <div class="card">
+      <div class="card-title">✏️ Dictation – Listen and write the full sentence!</div>
+      <div id="dictation-list"></div>
+    </div>
+  </div>
+
+  <div id="lphase-4" style="display:none">
+    <div id="listen-test-container"></div>
+  </div>
+</div>
+
+<!-- ========== EXAM SIMULATOR ========== -->
+<div class="screen" id="screen-exam">
+  <div class="lesson-header">
+    <div class="lesson-icon">📝</div>
+    <div class="lesson-info">
+      <h2>Exam Simulator – Unit 4</h2>
+      <p>Real exam style. All topics. Get your final grade!</p>
+    </div>
+    <button class="lesson-back" onclick="showScreen('home')">← Back</button>
+  </div>
+  <div id="exam-container"></div>
+</div>
+
+<!-- ========== PROGRESS SCREEN ========== -->
+<div class="screen" id="screen-progress">
+  <div class="lesson-header">
+    <div class="lesson-icon">📊</div>
+    <div class="lesson-info">
+      <h2>My Learning Dashboard</h2>
+      <p>Track your progress towards the exam</p>
+    </div>
+    <button class="lesson-back" onclick="showScreen('home')">← Back</button>
+  </div>
+  <div id="progress-content"></div>
+</div>
+
+</div><!-- end content -->
+</div><!-- end main -->
+</div><!-- end app -->
+
+<script>
+// ============================================================
+// DATA
+// ============================================================
+const ANIMALS = [
+  { id:'bird',      emoji:'🐦', en:'bird',      es:'pájaro' },
+  { id:'butterfly', emoji:'🦋', en:'butterfly',  es:'mariposa' },
+  { id:'squirrel',  emoji:'🐿️', en:'squirrel',  es:'ardilla' },
+  { id:'frog',      emoji:'🐸', en:'frog',       es:'rana' },
+  { id:'duck',      emoji:'🦆', en:'duck',       es:'pato' },
+  { id:'lizard',    emoji:'🦎', en:'lizard',     es:'lagarto' },
+  { id:'bat',       emoji:'🦇', en:'bat',        es:'murciélago' },
+  { id:'hedgehog',  emoji:'🦔', en:'hedgehog',   es:'erizo' },
+];
+
+const VERBS = [
+  { en:'fly',   es:'volar',   emoji:'✈️',  example:'A bird can fly.' },
+  { en:'run',   es:'correr',  emoji:'🏃',  example:'A frog can run.' },
+  { en:'swim',  es:'nadar',   emoji:'🏊',  example:'A duck can swim.' },
+  { en:'sing',  es:'cantar',  emoji:'🎵',  example:'A bird can sing.' },
+  { en:'jump',  es:'saltar',  emoji:'⬆️',  example:'A frog can jump.' },
+  { en:'climb', es:'trepar',  emoji:'🧗',  example:'A squirrel can climb.' },
+];
+
+const NUMBERS = [
+  [1,'one'],[2,'two'],[3,'three'],[4,'four'],[5,'five'],
+  [6,'six'],[7,'seven'],[8,'eight'],[9,'nine'],[10,'ten'],
+  [11,'eleven'],[12,'twelve'],[13,'thirteen'],[14,'fourteen'],[15,'fifteen'],
+  [16,'sixteen'],[17,'seventeen'],[18,'eighteen'],[19,'nineteen'],[20,'twenty'],
+];
+
+const CAN_EXAMPLES = [
+  { animal:'🐸', sentence:'A frog can swim.', can:true },
+  { animal:'🦆', sentence:'A duck can fly.', can:true },
+  { animal:'🦇', sentence:'A bat can\'t swim.', can:false },
+  { animal:'🐿️', sentence:'A squirrel can climb.', can:true },
+  { animal:'🐦', sentence:'A bird can\'t swim.', can:false },
+  { animal:'🦎', sentence:'A lizard can\'t fly.', can:false },
+];
+
+// Progress state
+const progress = {
+  animals: { score: null, stars: 0, done: false },
+  verbs:   { score: null, stars: 0, done: false },
+  can:     { score: null, stars: 0, done: false },
+  numbers: { score: null, stars: 0, done: false },
+  listening:{ score: null, stars: 0, done: false },
+  exam:    { score: null, done: false },
+};
+const hardWords = {};
+
+// ============================================================
+// TTS
+// ============================================================
+function speak(text, rate=0.85) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = 'en-GB'; u.rate = rate;
+  window.speechSynthesis.speak(u);
+}
+
+// ============================================================
+// NAVIGATION
+// ============================================================
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-' + id).classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  const nav = document.getElementById('nav-' + id);
+  if (nav) nav.classList.add('active');
+  if (id === 'home') updateHome();
+  if (id === 'progress') buildProgressScreen();
+  if (id === 'exam') buildExam();
+}
+
+function showLesson(id) {
+  showScreen(id);
+  if (id === 'animals') initAnimals();
+  if (id === 'verbs')   initVerbs();
+  if (id === 'can')     initCan();
+  if (id === 'numbers') initNumbers();
+  if (id === 'listening') initListening();
+}
+
+// ============================================================
+// COUNTDOWN
+// ============================================================
+function updateCountdown() {
+  const exam = new Date('2026-03-17');
+  const now = new Date();
+  const diff = Math.ceil((exam - now) / (1000*60*60*24));
+  document.getElementById('countdown-days').textContent = Math.max(0, diff);
+}
+updateCountdown();
+
+// ============================================================
+// PROGRESS / HOME
+// ============================================================
+function getStars(pct) {
+  if (pct >= 90) return '⭐⭐⭐';
+  if (pct >= 70) return '⭐⭐';
+  if (pct >= 50) return '⭐';
+  return '';
+}
+function updateOverallProgress() {
+  const keys = ['animals','verbs','can','numbers','listening'];
+  const done = keys.filter(k => progress[k].done).length;
+  const pct = Math.round(done / keys.length * 100);
+  document.getElementById('overall-progress').style.width = pct + '%';
+  document.getElementById('overall-pct').textContent = pct + '%';
+}
+function updateHome() {
+  ['animals','verbs','can','numbers','listening'].forEach(k => {
+    const s = document.getElementById('home-stars-' + k);
+    const st = document.getElementById('home-status-' + k);
+    const n = document.getElementById('stars-' + k);
+    if (s) s.textContent = progress[k].stars ? getStars(progress[k].score) : '';
+    if (st) st.textContent = progress[k].done ? '✅' : '▶️';
+    if (n) n.textContent = progress[k].stars ? getStars(progress[k].score) : '';
+  });
+  updateHardWords();
+  updateOverallProgress();
+}
+function updateHardWords() {
+  const el = document.getElementById('hard-words-display');
+  const entries = Object.entries(hardWords).filter(([,v])=>v>0).sort((a,b)=>b[1]-a[1]);
+  if (entries.length === 0) {
+    el.innerHTML = '<span style="color:var(--gray-400);font-size:13px;">No tricky words yet — great job! 🎉</span>';
+  } else {
+    el.innerHTML = entries.map(([w,c])=>`<div class="hard-word">${w}<span class="hw-count">${c}x</span></div>`).join('');
+  }
+}
+function trackHard(word) {
+  hardWords[word] = (hardWords[word] || 0) + 1;
+}
+
+// ============================================================
+// CLASS 1 – ANIMALS
+// ============================================================
+let animalPhase = 1, mcIdx = 0, mcQuestions = [], writeIdx = 0;
+let matchSelected = null, matchPairs = [], matchDone = 0;
+
+function initAnimals() {
+  showAnimalPhase(1);
+}
+function showAnimalPhase(n) {
+  animalPhase = n;
+  for(let i=1;i<=5;i++) document.getElementById('aphase-'+i).style.display = (i===n)?'block':'none';
+  document.querySelectorAll('[id^=atab-]').forEach(t => t.classList.remove('active','done'));
+  document.getElementById('atab-'+n).classList.add('active');
+  for(let i=1;i<n;i++) document.getElementById('atab-'+i).classList.add('done');
+
+  if (n===1) buildAnimalLearn();
+  if (n===2) buildMCExercise();
+  if (n===3) buildWriteExercise();
+  if (n===4) buildMatchExercise();
+  if (n===5) buildAnimalTest();
+}
+
+function buildAnimalLearn() {
+  const g = document.getElementById('animals-learn-grid');
+  g.innerHTML = ANIMALS.map(a => `
+    <div class="animal-card" onclick="speak('${a.en}')">
+      <span class="animal-emoji">${a.emoji}</span>
+      <div class="animal-en">${a.en}</div>
+      <div class="animal-es">(${a.es})</div>
+      <div style="margin-top:8px"><button class="speak-btn" onclick="event.stopPropagation();speak('${a.en}')">🔊 Hear</button></div>
+    </div>
+  `).join('');
+}
+
+function buildMCExercise() {
+  const shuffled = [...ANIMALS].sort(()=>Math.random()-.5);
+  mcQuestions = shuffled.map(a => {
+    const wrong = ANIMALS.filter(x=>x.id!==a.id).sort(()=>Math.random()-.5).slice(0,2);
+    const opts = [a,...wrong].sort(()=>Math.random()-.5);
+    return { animal:a, opts };
+  });
+  mcIdx = 0;
+  renderMCQuestion();
+}
+
+function renderMCQuestion() {
+  const c = document.getElementById('mc-exercise');
+  if (mcIdx >= mcQuestions.length) {
+    c.innerHTML = `<div style="text-align:center;padding:30px"><div style="font-size:48px">🎉</div><div style="font-family:'Fredoka One',cursive;font-size:24px;color:var(--green)">¡Terminado!</div><div class="btn-row" style="justify-content:center"><button class="btn btn-primary" onclick="showAnimalPhase(3)">Siguiente fase →</button></div></div>`;
+    return;
+  }
+  const {animal:a, opts} = mcQuestions[mcIdx];
+  c.innerHTML = `
+    <div class="exercise-box">
+      <div class="q-num">Question ${mcIdx+1} of ${mcQuestions.length}</div>
+      <span class="q-emoji">${a.emoji}</span>
+      <div class="q-text">What animal is this?</div>
+      <div class="options" id="mc-opts">
+        ${opts.map(o=>`<button class="option-btn" onclick="checkMC(this,'${a.id}','${o.id}')">${o.en}</button>`).join('')}
+      </div>
+      <div class="feedback" id="mc-fb"></div>
+    </div>`;
+}
+
+function checkMC(btn, correct, chosen) {
+  const fb = document.getElementById('mc-fb');
+  document.querySelectorAll('#mc-opts .option-btn').forEach(b => b.disabled = true);
+  if (chosen === correct) {
+    btn.classList.add('correct');
+    fb.className = 'feedback correct show'; fb.textContent = '✅ Correct! Well done!';
+    speak('Correct! ' + correct);
+  } else {
+    btn.classList.add('wrong');
+    fb.className = 'feedback wrong show'; fb.textContent = '❌ Not quite! The answer is ' + correct;
+    speak(correct);
+    trackHard(correct);
+    document.querySelectorAll('#mc-opts .option-btn').forEach(b => { if(b.textContent===correct) b.classList.add('correct'); });
+  }
+  setTimeout(() => { mcIdx++; renderMCQuestion(); }, 1500);
+}
+
+function buildWriteExercise() {
+  const c = document.getElementById('write-exercises');
+  const shuffled = [...ANIMALS].sort(()=>Math.random()-.5);
+  c.innerHTML = shuffled.map((a,i)=>`
+    <div class="exercise-box">
+      <div class="q-num">Exercise ${i+1}</div>
+      <span class="q-emoji">${a.emoji}</span>
+      <div class="q-text">Write the name of this animal in English:</div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+        <input class="text-input" style="max-width:200px" placeholder="Type here..." id="write-${i}" onkeydown="if(event.key==='Enter')checkWrite(${i},'${a.en}')">
+        <button class="btn btn-primary" onclick="checkWrite(${i},'${a.en}')">Check ✓</button>
+        <button class="speak-btn" onclick="speak('${a.en}')">🔊</button>
+      </div>
+      <div class="feedback" id="wfb-${i}"></div>
+    </div>
+  `).join('') + `<div class="btn-row"><button class="btn btn-success" onclick="showAnimalPhase(4)">Next Phase →</button></div>`;
+}
+
+function checkWrite(i, correct) {
+  const inp = document.getElementById('write-'+i);
+  const fb = document.getElementById('wfb-'+i);
+  const val = inp.value.trim().toLowerCase();
+  if (val === correct.toLowerCase()) {
+    inp.classList.add('correct'); inp.disabled = true;
+    fb.className = 'feedback correct show'; fb.textContent = '✅ Perfect!';
+    speak('Correct! ' + correct);
+  } else {
+    inp.classList.add('wrong');
+    fb.className = 'feedback wrong show'; fb.textContent = `❌ Almost! The answer is "${correct}"`;
+    speak(correct); trackHard(correct);
+    setTimeout(() => { inp.classList.remove('wrong'); inp.value=''; fb.className='feedback'; }, 2000);
+  }
+}
+
+function buildMatchExercise() {
+  const shuffledA = [...ANIMALS].sort(()=>Math.random()-.5).slice(0,6);
+  const shuffledB = [...shuffledA].sort(()=>Math.random()-.5);
+  matchSelected = null; matchPairs = []; matchDone = 0;
+
+  document.getElementById('match-left').innerHTML = shuffledA.map(a=>`
+    <div class="match-item" id="ml-${a.id}" onclick="selectMatch('left','${a.id}')">${a.emoji} ${a.en}</div>`).join('');
+  document.getElementById('match-right').innerHTML = shuffledB.map(a=>`
+    <div class="match-item" id="mr-${a.id}" onclick="selectMatch('right','${a.id}')">${a.es}</div>`).join('');
+  document.getElementById('match-feedback').innerHTML = '';
+}
+
+function selectMatch(side, id) {
+  if (matchSelected === null) {
+    matchSelected = { side, id };
+    document.getElementById((side==='left'?'ml':'mr')+'-'+id).classList.add('selected');
+  } else {
+    const prev = matchSelected;
+    if (prev.side === side) {
+      document.getElementById((prev.side==='left'?'ml':'mr')+'-'+prev.id).classList.remove('selected');
+      matchSelected = { side, id };
+      document.getElementById((side==='left'?'ml':'mr')+'-'+id).classList.add('selected');
+      return;
+    }
+    const leftId = side==='right' ? prev.id : id;
+    const rightId = side==='right' ? id : prev.id;
+    const correct = leftId === rightId;
+    const lEl = document.getElementById('ml-'+leftId);
+    const rEl = document.getElementById('mr-'+rightId);
+    if (correct) {
+      lEl.classList.remove('selected'); lEl.classList.add('matched'); lEl.onclick = null;
+      rEl.classList.remove('selected'); rEl.classList.add('matched'); rEl.onclick = null;
+      matchDone++;
+      speak(leftId);
+      if (matchDone === 6) {
+        document.getElementById('match-feedback').innerHTML = `<div class="feedback correct show">🎉 ¡Todo unido correctamente! <button class="btn btn-primary" onclick="showAnimalPhase(5)" style="margin-left:12px">Mini Test →</button></div>`;
+      }
+    } else {
+      lEl.classList.add('wrong-match'); rEl.classList.add('wrong-match');
+      lEl.classList.remove('selected'); rEl.classList.remove('selected');
+      setTimeout(()=>{ lEl.classList.remove('wrong-match'); rEl.classList.remove('wrong-match'); }, 600);
+      trackHard(leftId);
+    }
+    matchSelected = null;
+  }
+}
+
+// ============================================================
+// MINI TEST ENGINE
+// ============================================================
+function buildMiniTest(questions, containerId, onComplete) {
+  let curr = 0, results = [];
+  const render = () => {
+    if (curr >= questions.length) {
+      const correct = results.filter(r=>r).length;
+      const pct = Math.round(correct/questions.length*100);
+      document.getElementById(containerId).innerHTML = buildScoreHTML(correct, questions.length, pct, onComplete);
+      return;
+    }
+    const q = questions[curr];
+    const dots = questions.map((_,i)=>`<div class="test-dot ${i<curr?(results[i]?'done-correct':'done-wrong'):(i===curr?'current':'')}"></div>`).join('');
+    let exHTML = '';
+    if (q.type === 'mc') {
+      exHTML = `<div class="q-text">${q.question}</div>
+        <div class="options" id="test-opts">
+          ${q.options.map(o=>`<button class="option-btn" onclick="testAnswer(this,'${q.correct}','${o}','${containerId}',${curr},${questions.length})">${o}</button>`).join('')}
+        </div>`;
+    } else if (q.type === 'write') {
+      exHTML = `<div class="q-text">${q.question}</div>
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px">
+          <input class="text-input" style="max-width:220px" placeholder="Type here..." id="test-inp">
+          <button class="btn btn-primary" onclick="testWriteAnswer('${q.correct}','${containerId}',${curr},${questions.length})">Check ✓</button>
+        </div>`;
+    }
+    document.getElementById(containerId).innerHTML = `
+      <div class="card">
+        <div class="test-progress">
+          <div class="test-dots">${dots}</div>
+          <div style="font-size:13px;font-weight:700;color:var(--gray-600)">${curr+1} / ${questions.length}</div>
+        </div>
+        ${q.emoji ? `<span class="q-emoji">${q.emoji}</span>` : ''}
+        ${exHTML}
+        <div class="feedback" id="test-fb"></div>
+      </div>`;
+  };
+
+  window.testAnswer = function(btn, correct, chosen, cid, idx, total) {
+    if (cid !== containerId) return;
+    document.querySelectorAll('#test-opts .option-btn').forEach(b=>b.disabled=true);
+    const ok = chosen.toLowerCase()===correct.toLowerCase();
+    results[idx] = ok;
+    btn.classList.add(ok?'correct':'wrong');
+    const fb = document.getElementById('test-fb');
+    fb.className = 'feedback '+(ok?'correct':'wrong')+' show';
+    fb.textContent = ok ? '✅ Correct!' : `❌ The answer is "${correct}"`;
+    if (!ok) trackHard(correct);
+    speak(correct);
+    setTimeout(() => { curr++; render(); }, 1400);
+  };
+  window.testWriteAnswer = function(correct, cid, idx, total) {
+    if (cid !== containerId) return;
+    const inp = document.getElementById('test-inp');
+    if (!inp) return;
+    const val = inp.value.trim().toLowerCase();
+    const ok = val === correct.toLowerCase();
+    results[idx] = ok;
+    inp.classList.add(ok?'correct':'wrong');
+    inp.disabled = true;
+    const fb = document.getElementById('test-fb');
+    fb.className = 'feedback '+(ok?'correct':'wrong')+' show';
+    fb.textContent = ok ? '✅ Perfect!' : `❌ The answer is "${correct}"`;
+    if (!ok) trackHard(correct);
+    speak(correct);
+    setTimeout(() => { curr++; render(); }, 1800);
+  };
+
+  render();
+}
+
+function buildScoreHTML(correct, total, pct, onComplete) {
+  const grade = pct>=90?['¡Excelente! 🏆','excellent']:pct>=70?['¡Muy bien! 🌟','good']:pct>=50?['¡Sigue practicando! 💪','ok']:['¡A repasar más! 📚','practice'];
+  const stars = getStars(pct);
+  if (onComplete) onComplete(pct, stars);
+  return `<div class="score-card">
+    <div style="font-size:48px;margin-bottom:8px">${pct>=70?'🎉':'😊'}</div>
+    <div class="score-big">${correct}/${total}</div>
+    <div class="score-label">${pct}% correcto</div>
+    <div class="score-grade ${grade[1]}">${grade[0]}</div>
+    <div class="stars-display">${stars || '⭐'}</div>
+    <div class="btn-row" style="justify-content:center;margin-top:20px">
+      <button class="btn btn-primary" onclick="showScreen('home')">🏠 Inicio</button>
+      ${pct<80?`<button class="btn btn-warning" onclick="location.reload()">🔄 Intentar de nuevo</button>`:''}
+    </div>
+  </div>`;
+}
+
+function buildAnimalTest() {
+  const questions = [];
+  // MC questions
+  ANIMALS.slice(0,5).forEach(a => {
+    const wrong = ANIMALS.filter(x=>x.id!==a.id).sort(()=>Math.random()-.5).slice(0,2);
+    const opts = [a.en, ...wrong.map(w=>w.en)].sort(()=>Math.random()-.5);
+    questions.push({ type:'mc', emoji:a.emoji, question:'What animal is this?', options:opts, correct:a.en });
+  });
+  // Write questions
+  ANIMALS.slice(5).forEach(a => {
+    questions.push({ type:'write', emoji:a.emoji, question:'Write the name of this animal in English:', correct:a.en });
+  });
+  questions.sort(()=>Math.random()-.5);
+  const sel = questions.slice(0,6);
+  buildMiniTest(sel, 'animals-test-container', (pct, stars) => {
+    progress.animals.score = pct; progress.animals.stars = stars?stars.split('⭐').length-1:0;
+    progress.animals.done = true; updateHome();
+  });
+}
+
+// ============================================================
+// CLASS 2 – VERBS
+// ============================================================
+function initVerbs() { showVerbPhase(1); }
+function showVerbPhase(n) {
+  for(let i=1;i<=4;i++) document.getElementById('vphase-'+i).style.display = (i===n)?'block':'none';
+  document.querySelectorAll('[id^=vtab-]').forEach(t=>t.classList.remove('active','done'));
+  document.getElementById('vtab-'+n).classList.add('active');
+  for(let i=1;i<n;i++) document.getElementById('vtab-'+i).classList.add('done');
+  if (n===1) buildVerbTable();
+  if (n===2) buildVerbComprehension();
+  if (n===3) buildVerbWrite();
+  if (n===4) buildVerbTest();
+}
+
+function buildVerbTable() {
+  const tb = document.getElementById('verbs-table-body');
+  tb.innerHTML = VERBS.map(v=>`<tr>
+    <td><span class="verb-en">${v.en}</span></td>
+    <td>${v.es}</td>
+    <td><span class="verb-example">${v.example}</span></td>
+    <td><button class="speak-btn" onclick="speak('${v.example}')">🔊</button></td>
+  </tr>`).join('');
+}
+
+function buildVerbComprehension() {
+  const q = [
+    { q:'The frog can ______. (nadar)', correct:'swim', opts:['swim','fly','sing'] },
+    { q:'The bird can ______. (cantar)', correct:'sing', opts:['climb','run','sing'] },
+    { q:'The squirrel can ______. (trepar)', correct:'climb', opts:['swim','climb','jump'] },
+    { q:'The bat can ______. (volar)', correct:'fly', opts:['fly','run','swim'] },
+    { q:'The duck can ______. (correr)', correct:'run', opts:['sing','run','climb'] },
+    { q:'The frog can ______. (saltar)', correct:'jump', opts:['jump','fly','sing'] },
+  ];
+  const c = document.getElementById('verb-comprehension');
+  c.innerHTML = q.map((item,i)=>`
+    <div class="exercise-box">
+      <div class="q-num">Question ${i+1}</div>
+      <div class="q-text">${item.q}</div>
+      <div class="options" id="vcomp-opts-${i}">
+        ${item.opts.map(o=>`<button class="option-btn" onclick="checkVComp(this,${i},'${item.correct}','${o}')">${o}</button>`).join('')}
+      </div>
+      <div class="feedback" id="vcomp-fb-${i}"></div>
+    </div>`).join('') + `<div class="btn-row"><button class="btn btn-success" onclick="showVerbPhase(3)">Next Phase →</button></div>`;
+}
+
+function checkVComp(btn, i, correct, chosen) {
+  document.querySelectorAll(`#vcomp-opts-${i} .option-btn`).forEach(b=>b.disabled=true);
+  const ok = chosen===correct;
+  btn.classList.add(ok?'correct':'wrong');
+  const fb = document.getElementById('vcomp-fb-'+i);
+  fb.className='feedback '+(ok?'correct':'wrong')+' show';
+  fb.textContent = ok ? '✅ Correct!' : `❌ The answer is "${correct}"`;
+  if(!ok) trackHard(correct);
+  speak(correct);
+}
+
+function buildVerbWrite() {
+  const c = document.getElementById('verb-write');
+  const shuffled = [...VERBS].sort(()=>Math.random()-.5);
+  c.innerHTML = shuffled.map((v,i)=>`
+    <div class="exercise-box">
+      <div class="q-num">Exercise ${i+1}</div>
+      <div class="q-text">${v.emoji} "${v.es}" in English:</div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+        <input class="text-input" style="max-width:160px" placeholder="Type here..." id="vw-${i}" onkeydown="if(event.key==='Enter')checkVWrite(${i},'${v.en}')">
+        <button class="btn btn-primary" onclick="checkVWrite(${i},'${v.en}')">Check ✓</button>
+      </div>
+      <div class="feedback" id="vwfb-${i}"></div>
+    </div>`).join('') + `<div class="btn-row"><button class="btn btn-success" onclick="showVerbPhase(4)">Mini Test →</button></div>`;
+}
+function checkVWrite(i, correct) {
+  const inp=document.getElementById('vw-'+i); const fb=document.getElementById('vwfb-'+i);
+  const ok=inp.value.trim().toLowerCase()===correct;
+  inp.classList.add(ok?'correct':'wrong'); if(ok)inp.disabled=true;
+  fb.className='feedback '+(ok?'correct':'wrong')+' show';
+  fb.textContent=ok?'✅ Perfect!':`❌ The answer is "${correct}"`;
+  if(!ok){trackHard(correct);setTimeout(()=>{inp.classList.remove('wrong');inp.value='';fb.className='feedback';},2000);}
+}
+
+function buildVerbTest() {
+  const qs = VERBS.map(v=>{
+    const wrong=VERBS.filter(x=>x.en!==v.en).sort(()=>Math.random()-.5).slice(0,2);
+    const opts=[v.en,...wrong.map(w=>w.en)].sort(()=>Math.random()-.5);
+    return {type:'mc',question:`${v.emoji} How do you say "${v.es}" in English?`,options:opts,correct:v.en};
+  });
+  buildMiniTest(qs.slice(0,5),'verbs-test-container',(pct,stars)=>{
+    progress.verbs.score=pct; progress.verbs.done=true; updateHome();
+  });
+}
+
+// ============================================================
+// CLASS 3 – CAN / CAN'T
+// ============================================================
+let wordOrderExercises = [], woIdx = 0;
+
+function initCan() { showCanPhase(1); }
+function showCanPhase(n) {
+  for(let i=1;i<=4;i++) document.getElementById('cphase-'+i).style.display=(i===n)?'block':'none';
+  document.querySelectorAll('[id^=ctab-]').forEach(t=>t.classList.remove('active','done'));
+  document.getElementById('ctab-'+n).classList.add('active');
+  for(let i=1;i<n;i++) document.getElementById('ctab-'+i).classList.add('done');
+  if(n===1) buildCanExamples();
+  if(n===2) buildWordOrder();
+  if(n===3) buildQA();
+  if(n===4) buildCanTest();
+}
+
+function buildCanExamples() {
+  const c = document.getElementById('can-examples');
+  c.innerHTML = `<div style="display:flex;flex-direction:column;gap:10px">` +
+    CAN_EXAMPLES.map(e=>`
+      <div style="display:flex;align-items:center;gap:12px;padding:12px;background:${e.can?'var(--green-bg)':'var(--red-bg)'};border-radius:10px;border:1px solid ${e.can?'var(--green)':'var(--red)'}">
+        <span style="font-size:28px">${e.animal}</span>
+        <span style="font-weight:700;font-size:15px;color:${e.can?'var(--green)':'var(--red)'}">${e.sentence}</span>
+        <button class="speak-btn" style="margin-left:auto" onclick="speak('${e.sentence}')">🔊</button>
+      </div>`).join('') + `</div>
+    <div class="btn-row" style="margin-top:20px"><button class="btn btn-primary" onclick="showCanPhase(2)">Practice →</button></div>`;
+}
+
+function buildWordOrder() {
+  wordOrderExercises = [
+    { words:['frog','can','swim','A','.'], correct:'A frog can swim .' },
+    { words:['bat','can\'t','fly','A','.'], correct:'A bat can\'t fly .' },
+    { words:['duck','can','fly','A','.'], correct:'A duck can fly .' },
+    { words:['it','run','Can','?'], correct:'Can it run ?' },
+    { words:['squirrel','climb','can','A','.'], correct:'A squirrel can climb .' },
+    { words:['it','swim','Can\'t','?'], correct:'Can\'t it swim ?' },
+  ].map(e=>({...e, words:[...e.words].sort(()=>Math.random()-.5), placed:[], usedIdx:new Set()}));
+
+  woIdx = 0;
+  renderWordOrder();
+}
+
+function renderWordOrder() {
+  const c = document.getElementById('word-order-exercises');
+  if (woIdx >= wordOrderExercises.length) {
+    c.innerHTML = `<div class="card" style="text-align:center;padding:30px">
+      <div style="font-size:48px">🎉</div>
+      <div style="font-family:'Fredoka One',cursive;font-size:22px;color:var(--green);margin-bottom:16px">¡Todas las frases completadas!</div>
+      <button class="btn btn-primary" onclick="showCanPhase(3)">Siguiente fase →</button>
+    </div>`;
+    return;
+  }
+  const ex = wordOrderExercises[woIdx];
+  c.innerHTML = `
+    <div class="card">
+      <div class="q-num">Exercise ${woIdx+1} of ${wordOrderExercises.length} – Put the words in order:</div>
+      <div class="sentence-slots" id="wo-placed">
+        ${ex.placed.map((w,i)=>`<div class="sentence-slot" onclick="removeWord(${i})">${w}</div>`).join('')}
+      </div>
+      <div class="word-bank" id="wo-bank">
+        ${ex.words.map((w,i)=>`<div class="word-chip ${ex.usedIdx.has(i)?'used':''}" onclick="placeWord(${i},'${w.replace(/'/g,"\\'")}')">${w}</div>`).join('')}
+      </div>
+      <div class="feedback" id="wo-fb"></div>
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="checkWordOrder()">Check ✓</button>
+        <button class="btn" style="background:var(--gray-200)" onclick="resetWO()">Reset 🔄</button>
+      </div>
+    </div>`;
+}
+
+window.placeWord = function(idx, word) {
+  const ex = wordOrderExercises[woIdx];
+  if (ex.usedIdx.has(idx)) return;
+  ex.usedIdx.add(idx); ex.placed.push(word);
+  renderWordOrder();
+};
+window.removeWord = function(pi) {
+  const ex = wordOrderExercises[woIdx];
+  ex.placed.splice(pi,1);
+  ex.usedIdx = new Set();
+  // rebuild used: match placed words back to original words
+  const tmp = [...ex.words];
+  ex.placed.forEach(w => { const i=tmp.indexOf(w); if(i>=0){ex.usedIdx.add(ex.words.indexOf(w));tmp[i]=null;} });
+  renderWordOrder();
+};
+window.resetWO = function() {
+  const ex = wordOrderExercises[woIdx]; ex.placed=[]; ex.usedIdx=new Set(); renderWordOrder();
+};
+window.checkWordOrder = function() {
+  const ex = wordOrderExercises[woIdx];
+  const ans = ex.placed.join(' ');
+  const fb = document.getElementById('wo-fb');
+  if (ans === ex.correct) {
+    fb.className='feedback correct show'; fb.textContent='✅ Perfect sentence!';
+    speak(ans.replace(' .','.')); 
+    setTimeout(()=>{ woIdx++; renderWordOrder(); },1500);
+  } else {
+    fb.className='feedback wrong show'; fb.textContent=`❌ Not quite! Try again. Correct: "${ex.correct.replace(' .','.')}"`;
+    trackHard(ex.correct.replace(' .',''));
+    setTimeout(()=>{ fb.className='feedback'; },2500);
+  }
+};
+
+function buildQA() {
+  const qas = [
+    { q:'Can it run?', context:'🐸 frog', correct:'Yes, it can.', isYes:true },
+    { q:'Can it fly?', context:'🦔 hedgehog', correct:'No, it can\'t.', isYes:false },
+    { q:'Can it swim?', context:'🦆 duck', correct:'Yes, it can.', isYes:true },
+    { q:'Can it climb a tree?', context:'🐿️ squirrel', correct:'Yes, it can.', isYes:true },
+    { q:'Can it talk to me?', context:'🐦 bird', correct:'No, it can\'t.', isYes:false },
+    { q:'Can it sing?', context:'🦇 bat', correct:'No, it can\'t.', isYes:false },
+  ];
+  const c = document.getElementById('qa-exercises');
+  c.innerHTML = qas.map((qa,i)=>`
+    <div class="exercise-box">
+      <div class="q-num">Question ${i+1}</div>
+      <div class="q-text">${qa.context} – <em>${qa.q}</em></div>
+      <div class="options" id="qa-opts-${i}">
+        <button class="option-btn" onclick="checkQA(this,${i},'${qa.correct}','Yes, it can.')">Yes, it can.</button>
+        <button class="option-btn" onclick="checkQA(this,${i},'${qa.correct}','No, it can\\'t.')">No, it can't.</button>
+      </div>
+      <div class="feedback" id="qa-fb-${i}"></div>
+    </div>`).join('') + `<div class="btn-row"><button class="btn btn-success" onclick="showCanPhase(4)">Mini Test →</button></div>`;
+}
+
+function checkQA(btn, i, correct, chosen) {
+  document.querySelectorAll(`#qa-opts-${i} .option-btn`).forEach(b=>b.disabled=true);
+  const ok=chosen===correct;
+  btn.classList.add(ok?'correct':'wrong');
+  const fb=document.getElementById('qa-fb-'+i);
+  fb.className='feedback '+(ok?'correct':'wrong')+' show';
+  fb.textContent=ok?'✅ Correct!':`❌ The answer is "${correct}"`;
+  if(!ok) trackHard(correct);
+  speak(correct);
+}
+
+function buildCanTest() {
+  const qs = [
+    {type:'mc',question:'🐸 Can it swim? (frog)',options:['Yes, it can.','No, it can\'t.'],correct:'Yes, it can.'},
+    {type:'mc',question:'🦔 Can it fly? (hedgehog)',options:['Yes, it can.','No, it can\'t.'],correct:'No, it can\'t.'},
+    {type:'mc',question:'Which sentence is correct?',options:['It can\'t swim.','It swim can\'t.','Can\'t swim it.'],correct:'It can\'t swim.'},
+    {type:'write',question:'Complete: "A bird ___ fly." (can)',correct:'can'},
+    {type:'write',question:'Complete: "A hedgehog ___ fly." (can\'t)',correct:'can\'t'},
+    {type:'mc',question:'🦆 Can it swim? (duck)',options:['Yes, it can.','No, it can\'t.'],correct:'Yes, it can.'},
+    {type:'mc',question:'What does "can\'t" mean?',options:['puede','no puede','quiere'],correct:'no puede'},
+    {type:'write',question:'Write: "Una rana puede nadar." in English:',correct:'A frog can swim.'},
+  ];
+  buildMiniTest(qs.slice(0,7),'can-test-container',(pct,stars)=>{
+    progress.can.score=pct; progress.can.done=true; updateHome();
+  });
+}
+
+// ============================================================
+// CLASS 4 – NUMBERS
+// ============================================================
+let numMatchSel=null, numMatchDone=0;
+
+function initNumbers() { showNumPhase(1); }
+function showNumPhase(n) {
+  for(let i=1;i<=5;i++) document.getElementById('nphase-'+i).style.display=(i===n)?'block':'none';
+  document.querySelectorAll('[id^=ntab-]').forEach(t=>t.classList.remove('active','done'));
+  document.getElementById('ntab-'+n).classList.add('active');
+  for(let i=1;i<n;i++) document.getElementById('ntab-'+i).classList.add('done');
+  if(n===1) buildNumLearn();
+  if(n===2) buildNumWrite();
+  if(n===3) buildNumMatch();
+  if(n===4) buildNumCount();
+  if(n===5) buildNumTest();
+}
+
+function buildNumLearn() {
+  const g = document.getElementById('numbers-learn-grid');
+  g.innerHTML = NUMBERS.map(([n,w])=>`
+    <div class="num-card" onclick="speak('${w}')">
+      <div class="num-digit">${n}</div>
+      <div class="num-word">${w}</div>
+    </div>`).join('');
+}
+
+function buildNumWrite() {
+  const shuffled = [...NUMBERS].sort(()=>Math.random()-.5).slice(0,8);
+  const c = document.getElementById('num-write-exercises');
+  c.innerHTML = shuffled.map(([n,w],i)=>`
+    <div class="exercise-box">
+      <div class="q-num">Exercise ${i+1}</div>
+      <div class="q-text" style="font-size:36px;font-family:'Fredoka One',cursive;color:var(--blue)">${n}</div>
+      <div style="margin-top:8px;font-size:13px;color:var(--gray-600)">Write this number in words:</div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:8px">
+        <input class="text-input" style="max-width:180px" placeholder="Type here..." id="nw-${i}" onkeydown="if(event.key==='Enter')checkNumWrite(${i},'${w}')">
+        <button class="btn btn-primary" onclick="checkNumWrite(${i},'${w}')">Check ✓</button>
+        <button class="speak-btn" onclick="speak('${w}')">🔊</button>
+      </div>
+      <div class="feedback" id="nwfb-${i}"></div>
+    </div>`).join('') + `<div class="btn-row"><button class="btn btn-success" onclick="showNumPhase(3)">Next →</button></div>`;
+}
+function checkNumWrite(i, correct) {
+  const inp=document.getElementById('nw-'+i); const fb=document.getElementById('nwfb-'+i);
+  const ok=inp.value.trim().toLowerCase()===correct;
+  inp.classList.add(ok?'correct':'wrong'); if(ok)inp.disabled=true;
+  fb.className='feedback '+(ok?'correct':'wrong')+' show';
+  fb.textContent=ok?`✅ "${correct}" – Correct!`:`❌ The answer is "${correct}"`;
+  if(!ok){trackHard(correct);setTimeout(()=>{inp.classList.remove('wrong');inp.value='';fb.className='feedback';},2000);}
+  speak(correct);
+}
+
+function buildNumMatch() {
+  const pick = NUMBERS.filter((_,i)=>i%2===0).sort(()=>Math.random()-.5).slice(0,6);
+  const pickR = [...pick].sort(()=>Math.random()-.5);
+  numMatchSel=null; numMatchDone=0;
+  document.getElementById('num-match-left').innerHTML = pick.map(([n,w])=>`
+    <div class="match-item" id="nml-${n}" onclick="selectNumMatch('left',${n},'${w}')">${n}</div>`).join('');
+  document.getElementById('num-match-right').innerHTML = pickR.map(([n,w])=>`
+    <div class="match-item" id="nmr-${n}" onclick="selectNumMatch('right',${n},'${w}')">${w}</div>`).join('');
+  document.getElementById('num-match-feedback').innerHTML='';
+}
+
+function selectNumMatch(side, id, word) {
+  if(!numMatchSel) {
+    numMatchSel={side,id,word};
+    document.getElementById((side==='left'?'nml':'nmr')+'-'+id).classList.add('selected');
+  } else {
+    const prev=numMatchSel;
+    if(prev.side===side) {
+      document.getElementById((prev.side==='left'?'nml':'nmr')+'-'+prev.id).classList.remove('selected');
+      numMatchSel={side,id,word};
+      document.getElementById((side==='left'?'nml':'nmr')+'-'+id).classList.add('selected');
+      return;
+    }
+    const lid = side==='right'?prev.id:id;
+    const rid = side==='right'?id:prev.id;
+    const correct = lid===rid;
+    const lEl=document.getElementById('nml-'+lid); const rEl=document.getElementById('nmr-'+rid);
+    if(correct) {
+      lEl.classList.remove('selected'); lEl.classList.add('matched'); lEl.onclick=null;
+      rEl.classList.remove('selected'); rEl.classList.add('matched'); rEl.onclick=null;
+      numMatchDone++;
+      speak(NUMBERS.find(([n])=>n===lid)?.[1]||'');
+      if(numMatchDone===6) document.getElementById('num-match-feedback').innerHTML=`<div class="feedback correct show">🎉 ¡Todo correcto! <button class="btn btn-primary" onclick="showNumPhase(4)" style="margin-left:12px">Siguiente →</button></div>`;
+    } else {
+      lEl.classList.add('wrong-match'); rEl.classList.add('wrong-match');
+      lEl.classList.remove('selected'); rEl.classList.remove('selected');
+      setTimeout(()=>{lEl.classList.remove('wrong-match');rEl.classList.remove('wrong-match');},600);
+    }
+    numMatchSel=null;
+  }
+}
+
+function buildNumCount() {
+  const counts = [
+    {emoji:'🐸',count:7},{emoji:'🦋',count:12},{emoji:'🐦',count:5},
+    {emoji:'🦆',count:9},{emoji:'🐿️',count:3},{emoji:'🦇',count:16},
+  ];
+  const c = document.getElementById('count-exercises');
+  c.innerHTML = counts.map((item,i)=>`
+    <div class="exercise-box">
+      <div class="q-num">Question ${i+1}</div>
+      <div class="q-text">How many ${item.emoji} can you see?</div>
+      <div style="font-size:22px;letter-spacing:2px;margin:10px 0">${item.emoji.repeat(item.count)}</div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+        <input class="text-input" style="max-width:180px" placeholder="Write in words..." id="cnt-${i}" onkeydown="if(event.key==='Enter')checkCount(${i},${item.count})">
+        <button class="btn btn-primary" onclick="checkCount(${i},${item.count})">Check ✓</button>
+      </div>
+      <div class="feedback" id="cntfb-${i}"></div>
+    </div>`).join('') + `<div class="btn-row"><button class="btn btn-success" onclick="showNumPhase(5)">Mini Test →</button></div>`;
+}
+function checkCount(i, n) {
+  const correct = NUMBERS.find(([num])=>num===n)?.[1]||'';
+  const inp=document.getElementById('cnt-'+i); const fb=document.getElementById('cntfb-'+i);
+  const ok=inp.value.trim().toLowerCase()===correct;
+  inp.classList.add(ok?'correct':'wrong'); if(ok)inp.disabled=true;
+  fb.className='feedback '+(ok?'correct':'wrong')+' show';
+  fb.textContent=ok?`✅ ${n} = "${correct}"`:`❌ The answer is "${correct}" (${n})`;
+  if(!ok){trackHard(correct);setTimeout(()=>{inp.classList.remove('wrong');inp.value='';fb.className='feedback';},2000);}
+  speak(correct);
+}
+
+function buildNumTest() {
+  const qs = [
+    ...NUMBERS.filter((_,i)=>[2,5,8,11,14,17].includes(i)).map(([n,w])=>({
+      type:'mc', question:`What is ${n} in English?`,
+      options:[w,...NUMBERS.filter(([nn])=>nn!==n).sort(()=>Math.random()-.5).slice(0,2).map(([,ww])=>ww)].sort(()=>Math.random()-.5),
+      correct:w
+    })),
+    ...NUMBERS.filter((_,i)=>[3,9,15].includes(i)).map(([n,w])=>({
+      type:'write', question:`Write the number ${n} in English:`, correct:w
+    })),
+  ];
+  buildMiniTest(qs.slice(0,7),'numbers-test-container',(pct,stars)=>{
+    progress.numbers.score=pct; progress.numbers.done=true; updateHome();
+  });
+}
+
+// ============================================================
+// CLASS 5 – LISTENING
+// ============================================================
+function initListening() { showListenPhase(1); }
+function showListenPhase(n) {
+  for(let i=1;i<=4;i++) document.getElementById('lphase-'+i).style.display=(i===n)?'block':'none';
+  document.querySelectorAll('[id^=ltab-]').forEach(t=>t.classList.remove('active','done'));
+  document.getElementById('ltab-'+n).classList.add('active');
+  for(let i=1;i<n;i++) document.getElementById('ltab-'+i).classList.add('done');
+  if(n===1) buildListenRepeat();
+  if(n===2) buildListenAnswer();
+  if(n===3) buildDictation();
+  if(n===4) buildListenTest();
+}
+
+const LISTEN_SENTENCES = [
+  'A frog can swim.',
+  'A bat can\'t fly during the day.',
+  'It can run.',
+  'It can\'t sing.',
+  'Can it climb a tree? Yes, it can.',
+  'How many butterflies can you see?',
+  'A duck can swim and fly.',
+];
+
+function buildListenRepeat() {
+  const c = document.getElementById('listen-repeat-list');
+  c.innerHTML = LISTEN_SENTENCES.map((s,i)=>`
+    <div class="exercise-box" style="display:flex;align-items:center;gap:16px;flex-wrap:wrap">
+      <div style="flex:1;min-width:200px">
+        <div class="q-num">Sentence ${i+1}</div>
+        <div class="q-text">${s}</div>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button class="speak-btn" onclick="speak('${s.replace(/'/g,"\\'")}')">🔊 Play</button>
+        <button class="speak-btn" style="background:var(--green)" onclick="speak('${s.replace(/'/g,"\\'")}',0.7)">🐢 Slow</button>
+      </div>
+    </div>`).join('') + `<div class="btn-row"><button class="btn btn-primary" onclick="showListenPhase(2)">Next →</button></div>`;
+}
+
+function buildListenAnswer() {
+  const items = [
+    {s:'A frog can swim.',q:'Can it swim?',correct:'Yes, it can.'},
+    {s:'A bat can\'t fly.',q:'Can it fly?',correct:'No, it can\'t.'},
+    {s:'A duck can jump.',q:'Can it jump?',correct:'Yes, it can.'},
+    {s:'A squirrel can\'t swim.',q:'Can it swim?',correct:'No, it can\'t.'},
+  ];
+  const c = document.getElementById('listen-answer-list');
+  c.innerHTML = items.map((item,i)=>`
+    <div class="exercise-box">
+      <div class="q-num">Exercise ${i+1} – Listen, then answer the question</div>
+      <button class="speak-btn" style="margin-bottom:12px" onclick="speak('${item.s.replace(/'/g,"\\'")}')">🔊 Play sentence</button>
+      <div class="q-text">${item.q}</div>
+      <div class="options" id="la-opts-${i}">
+        <button class="option-btn" onclick="checkLA(this,${i},'${item.correct}','Yes, it can.')">Yes, it can.</button>
+        <button class="option-btn" onclick="checkLA(this,${i},'${item.correct}','No, it can\\'t.')">No, it can't.</button>
+      </div>
+      <div class="feedback" id="la-fb-${i}"></div>
+    </div>`).join('') + `<div class="btn-row"><button class="btn btn-success" onclick="showListenPhase(3)">Next →</button></div>`;
+}
+function checkLA(btn,i,correct,chosen) {
+  document.querySelectorAll(`#la-opts-${i} .option-btn`).forEach(b=>b.disabled=true);
+  const ok=chosen===correct;
+  btn.classList.add(ok?'correct':'wrong');
+  const fb=document.getElementById('la-fb-'+i);
+  fb.className='feedback '+(ok?'correct':'wrong')+' show';
+  fb.textContent=ok?'✅ Correct!':`❌ The answer is "${correct}"`;
+  if(!ok)trackHard(correct);
+  speak(correct);
+}
+
+function buildDictation() {
+  const sents=['It can run.','A frog can swim.','It can\'t fly.','Can it jump?'];
+  const c = document.getElementById('dictation-list');
+  c.innerHTML = sents.map((s,i)=>`
+    <div class="exercise-box">
+      <div class="q-num">Dictation ${i+1}</div>
+      <button class="speak-btn" style="margin-bottom:12px" onclick="speak('${s.replace(/'/g,"\\'")}',0.8)">🔊 Listen</button>
+      <input class="text-input" placeholder="Write what you hear..." id="dict-${i}" onkeydown="if(event.key==='Enter')checkDict(${i},'${s.replace(/'/g,"\\'").replace(/\?/,'\\?')}')">
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="checkDict(${i},'${s.replace(/'/g,"\\'").replace(/\?/,'\\?')}')">Check ✓</button>
+      </div>
+      <div class="feedback" id="dictfb-${i}"></div>
+    </div>`).join('') + `<div class="btn-row"><button class="btn btn-success" onclick="showListenPhase(4)">Mini Test →</button></div>`;
+}
+function checkDict(i, correct) {
+  const inp=document.getElementById('dict-'+i); const fb=document.getElementById('dictfb-'+i);
+  const val=inp.value.trim().replace(/[?\.]/g,'').toLowerCase();
+  const cor=correct.replace(/[?\.]/g,'').toLowerCase();
+  const ok=val===cor;
+  inp.classList.add(ok?'correct':'wrong'); if(ok)inp.disabled=true;
+  fb.className='feedback '+(ok?'correct':'wrong')+' show';
+  fb.textContent=ok?'✅ Perfect dictation!':`❌ The correct sentence is: "${correct}"`;
+  if(!ok){trackHard(correct);setTimeout(()=>{inp.classList.remove('wrong');inp.value='';fb.className='feedback';},2500);}
+  speak(correct);
+}
+
+function buildListenTest() {
+  const qs = [
+    {type:'mc',question:'🔊 "It can... what?" – A frog can ___.',options:['swim','fly','sing'],correct:'swim'},
+    {type:'mc',question:'🔊 "A bat can\'t ___."',options:['fly','swim','run'],correct:'fly'},
+    {type:'mc',question:'Listen: "Can it run?" – What is the correct answer?',options:['Yes, it can.','No, it can\'t.','It can run.'],correct:'Yes, it can.'},
+    {type:'write',question:'Write: "It can\'t fly." (the full sentence)',correct:'It can\'t fly.'},
+    {type:'mc',question:'"How many frogs can you ___?"',options:['see','hear','find'],correct:'see'},
+  ];
+  buildMiniTest(qs,'listen-test-container',(pct,stars)=>{
+    progress.listening.score=pct; progress.listening.done=true; updateHome();
+  });
+}
+
+// ============================================================
+// EXAM SIMULATOR
+// ============================================================
+let examQuestions=[], examIdx=0, examResults=[];
+
+function buildExam() {
+  const c = document.getElementById('exam-container');
+  c.innerHTML = `
+    <div class="card" style="text-align:center;padding:36px">
+      <div style="font-size:56px;margin-bottom:12px">📝</div>
+      <div style="font-family:'Fredoka One',cursive;font-size:28px;color:var(--navy);margin-bottom:8px">Unit 4 Exam Simulator</div>
+      <p style="color:var(--gray-600);max-width:440px;margin:0 auto 20px;line-height:1.6">
+        20 questions across all topics: Animals, Verbs, Can/Can't, Numbers, and Listening.<br>
+        Get your final grade and see where to improve!
+      </p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:24px">
+        <div style="background:var(--sky);border-radius:10px;padding:10px 16px;font-size:13px;font-weight:700">🐾 5 Animals</div>
+        <div style="background:var(--green-bg);border-radius:10px;padding:10px 16px;font-size:13px;font-weight:700">🏃 3 Verbs</div>
+        <div style="background:var(--yellow-bg);border-radius:10px;padding:10px 16px;font-size:13px;font-weight:700">✅ 6 Can/Can't</div>
+        <div style="background:var(--purple-bg);border-radius:10px;padding:10px 16px;font-size:13px;font-weight:700">🔢 4 Numbers</div>
+        <div style="background:var(--teal-bg);border-radius:10px;padding:10px 16px;font-size:13px;font-weight:700">🎧 2 Listening</div>
+      </div>
+      <button class="btn btn-purple" style="font-size:18px;padding:16px 36px" onclick="startExam()">🚀 Start Exam</button>
+    </div>`;
+}
+
+function startExam() {
+  examResults=[];
+  examQuestions = [
+    // ANIMALS
+    ...ANIMALS.slice(0,5).map(a=>{
+      const wrong=ANIMALS.filter(x=>x.id!==a.id).sort(()=>Math.random()-.5).slice(0,2);
+      return {type:'mc',section:'Animals',emoji:a.emoji,question:'What animal is this?',options:[a.en,...wrong.map(w=>w.en)].sort(()=>Math.random()-.5),correct:a.en};
+    }),
+    // VERBS
+    ...VERBS.slice(0,3).map(v=>({
+      type:'mc',section:'Action Verbs',question:`How do you say "${v.es}" in English?`,
+      options:[v.en,...VERBS.filter(x=>x.en!==v.en).sort(()=>Math.random()-.5).slice(0,2).map(w=>w.en)].sort(()=>Math.random()-.5),
+      correct:v.en
+    })),
+    // CAN
+    {type:'mc',section:'Can/Can\'t',question:'🐸 Can it swim? (frog)',options:['Yes, it can.','No, it can\'t.'],correct:'Yes, it can.'},
+    {type:'mc',section:'Can/Can\'t',question:'🦔 Can it fly? (hedgehog)',options:['Yes, it can.','No, it can\'t.'],correct:'No, it can\'t.'},
+    {type:'mc',section:'Can/Can\'t',question:'Which is correct?',options:['It can\'t swim.','It swim can\'t.','Can\'t it swim'],correct:'It can\'t swim.'},
+    {type:'write',section:'Can/Can\'t',question:'Write: "Una rana puede nadar." in English:',correct:'A frog can swim.'},
+    {type:'mc',section:'Can/Can\'t',question:'🦆 Can a duck swim?',options:['Yes, it can.','No, it can\'t.'],correct:'Yes, it can.'},
+    {type:'write',section:'Can/Can\'t',question:'"A bird ___ fly." Complete with can or can\'t:',correct:'can'},
+    // NUMBERS
+    {type:'mc',section:'Numbers',question:'What is 15 in English?',options:['fifteen','fifty','fifth'],correct:'fifteen'},
+    {type:'mc',section:'Numbers',question:'What is 12 in English?',options:['twenty','twelve','eleven'],correct:'twelve'},
+    {type:'write',section:'Numbers',question:'Write the number 8 in words:',correct:'eight'},
+    {type:'write',section:'Numbers',question:'Write the number 17 in words:',correct:'seventeen'},
+    // LISTENING
+    {type:'mc',section:'Listening',question:'🔊 "How many ___ can you see?" Complete:',options:['frogs','swimming','can'],correct:'frogs'},
+    {type:'mc',section:'Listening',question:'🔊 Listen: "Can it jump?" – Frog. Correct answer:',options:['Yes, it can.','No, it can\'t.'],correct:'Yes, it can.'},
+  ].sort(()=>Math.random()-.5);
+
+  examIdx=0;
+  renderExamQuestion();
+}
+
+function renderExamQuestion() {
+  const c = document.getElementById('exam-container');
+  if (examIdx >= examQuestions.length) {
+    const correct = examResults.filter(r=>r).length;
+    const pct = Math.round(correct/examQuestions.length*100);
+    const grade = pct>=90?'A – ¡Sobresaliente! 🏆':pct>=70?'B – ¡Muy bien! 🌟':pct>=50?'C – ¡Buen esfuerzo! 💪':'D – ¡A seguir practicando! 📚';
+    progress.exam.score=pct; progress.exam.done=true; updateHome();
+    c.innerHTML = `
+      <div class="score-card">
+        <div style="font-size:56px;margin-bottom:12px">${pct>=70?'🎓':'📚'}</div>
+        <div style="font-family:'Fredoka One',cursive;font-size:18px;color:var(--gray-600);margin-bottom:4px">EXAM RESULT</div>
+        <div class="score-big">${correct}/${examQuestions.length}</div>
+        <div class="score-label">${pct}%</div>
+        <div class="score-grade ${pct>=90?'excellent':pct>=70?'good':pct>=50?'ok':'practice'}">${grade}</div>
+        <div class="stars-display">${getStars(pct) || '📘'}</div>
+        ${pct>=80?`<div style="margin-top:16px;padding:16px;background:var(--green-bg);border-radius:12px;color:var(--green);font-weight:700">🎉 ¡Estás listo para el examen del 17 de marzo!</div>`:`<div style="margin-top:16px;padding:16px;background:var(--yellow-bg);border-radius:12px;color:var(--orange);font-weight:700">📚 ¡Sigue estudiando! ¡Cada vez lo haces mejor!</div>`}
+        <div class="btn-row" style="justify-content:center;margin-top:20px">
+          <button class="btn btn-primary" onclick="showScreen('home')">🏠 Home</button>
+          <button class="btn btn-purple" onclick="startExam()">🔄 Try Again</button>
+        </div>
+      </div>`;
+    return;
+  }
+
+  const q = examQuestions[examIdx];
+  const dots = examQuestions.map((_,i)=>`<div class="test-dot ${i<examIdx?(examResults[i]?'done-correct':'done-wrong'):(i===examIdx?'current':'')}"></div>`).join('');
+  let exHTML='';
+  if(q.type==='mc') {
+    exHTML=`<div class="options" id="exam-opts">
+      ${q.options.map(o=>`<button class="option-btn" onclick="checkExam(this,'${q.correct.replace(/'/g,"\\'")}','${o.replace(/'/g,"\\'")}')">${o}</button>`).join('')}
+    </div>`;
+  } else {
+    exHTML=`<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:8px">
+      <input class="text-input" style="max-width:280px" placeholder="Type here..." id="exam-inp">
+      <button class="btn btn-primary" onclick="checkExamWrite('${q.correct.replace(/'/g,"\\'").replace(/\?/,'\\?')}')">Check ✓</button>
+    </div>`;
+  }
+
+  c.innerHTML = `
+    <div style="margin-bottom:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+        <div style="font-size:11px;font-weight:800;letter-spacing:1px;color:rgba(255,255,255,.5)">${q.section?.toUpperCase()}</div>
+        <div style="font-size:13px;font-weight:700;color:rgba(255,255,255,.7)">${examIdx+1} / ${examQuestions.length}</div>
+      </div>
+      <div style="display:flex;gap:4px;flex-wrap:wrap">${dots}</div>
+    </div>
+    <div class="card">
+      ${q.emoji?`<span class="q-emoji">${q.emoji}</span>`:''}
+      <div class="q-text" style="margin-bottom:14px">${q.question}</div>
+      ${exHTML}
+      <div class="feedback" id="exam-fb"></div>
+    </div>`;
+}
+
+function checkExam(btn, correct, chosen) {
+  document.querySelectorAll('#exam-opts .option-btn').forEach(b=>b.disabled=true);
+  const ok=chosen===correct;
+  examResults[examIdx]=ok;
+  btn.classList.add(ok?'correct':'wrong');
+  const fb=document.getElementById('exam-fb');
+  fb.className='feedback '+(ok?'correct':'wrong')+' show';
+  fb.textContent=ok?'✅ Correct!':`❌ The answer is "${correct}"`;
+  if(!ok)trackHard(correct);
+  speak(correct);
+  setTimeout(()=>{ examIdx++; renderExamQuestion(); },1500);
+}
+function checkExamWrite(correct) {
+  const inp=document.getElementById('exam-inp'); if(!inp)return;
+  const val=inp.value.trim().toLowerCase().replace(/[?.]/g,'');
+  const cor=correct.toLowerCase().replace(/[?.]/g,'');
+  const ok=val===cor;
+  examResults[examIdx]=ok;
+  inp.classList.add(ok?'correct':'wrong'); inp.disabled=true;
+  const fb=document.getElementById('exam-fb');
+  fb.className='feedback '+(ok?'correct':'wrong')+' show';
+  fb.textContent=ok?'✅ Perfect!':`❌ The answer is "${correct}"`;
+  if(!ok)trackHard(correct);
+  speak(correct);
+  setTimeout(()=>{ examIdx++; renderExamQuestion(); },1800);
+}
+
+// ============================================================
+// PROGRESS SCREEN
+// ============================================================
+function buildProgressScreen() {
+  const keys=['animals','verbs','can','numbers','listening'];
+  const names=['🐾 Animals','🏃 Verbs','✅ Can/Can\'t','🔢 Numbers','🎧 Listening'];
+  const colors=['var(--blue)','var(--green)','var(--yellow)','var(--purple)','var(--teal)'];
+  const done=keys.filter(k=>progress[k].done).length;
+  const avgScore = keys.filter(k=>progress[k].done).length>0 ? Math.round(keys.filter(k=>progress[k].done).reduce((s,k)=>s+(progress[k].score||0),0)/keys.filter(k=>progress[k].done).length) : 0;
+
+  const c = document.getElementById('progress-content');
+  c.innerHTML = `
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:24px">
+      <div class="card" style="text-align:center;padding:20px">
+        <div style="font-family:'Fredoka One',cursive;font-size:42px;color:var(--blue)">${done}/5</div>
+        <div style="font-size:12px;font-weight:800;color:var(--gray-600)">CLASSES DONE</div>
+      </div>
+      <div class="card" style="text-align:center;padding:20px">
+        <div style="font-family:'Fredoka One',cursive;font-size:42px;color:var(--green)">${avgScore}%</div>
+        <div style="font-size:12px;font-weight:800;color:var(--gray-600)">AVERAGE SCORE</div>
+      </div>
+      <div class="card" style="text-align:center;padding:20px">
+        <div style="font-family:'Fredoka One',cursive;font-size:42px;color:var(--yellow)">${Object.keys(hardWords).length}</div>
+        <div style="font-size:12px;font-weight:800;color:var(--gray-600)">WORDS TO REVIEW</div>
+      </div>
+      <div class="card" style="text-align:center;padding:20px">
+        <div style="font-family:'Fredoka One',cursive;font-size:42px;color:var(--purple)" id="pd-countdown">-</div>
+        <div style="font-size:12px;font-weight:800;color:var(--gray-600)">DAYS TO EXAM</div>
+      </div>
+    </div>
+    <div class="card" style="margin-bottom:20px">
+      <div class="card-title">📊 Class Performance</div>
+      ${keys.map((k,i)=>`
+        <div style="margin-bottom:14px">
+          <div style="display:flex;justify-content:space-between;margin-bottom:4px">
+            <span style="font-weight:700;font-size:14px">${names[i]}</span>
+            <span style="font-size:13px;font-weight:700;color:${progress[k].done?'var(--green)':'var(--gray-400)'}">${progress[k].done?progress[k].score+'%':'Not started'}</span>
+          </div>
+          <div style="height:10px;background:var(--gray-100);border-radius:5px;overflow:hidden">
+            <div style="height:100%;background:${colors[i]};border-radius:5px;width:${progress[k].score||0}%;transition:width .5s"></div>
+          </div>
+        </div>`).join('')}
+    </div>
+    ${Object.keys(hardWords).length>0?`
+    <div class="card">
+      <div class="card-title">⚠️ Words to Review</div>
+      <div class="hard-words" id="pd-hard-words">
+        ${Object.entries(hardWords).sort((a,b)=>b[1]-a[1]).map(([w,c])=>`<div class="hard-word">${w}<span class="hw-count">${c}x</span><button class="speak-btn" style="padding:4px 8px;font-size:11px" onclick="speak('${w.replace(/'/g,"\\'")}')">🔊</button></div>`).join('')}
+      </div>
+    </div>`:''}
+    ${progress.exam.done?`
+    <div class="card" style="text-align:center;padding:30px;background:linear-gradient(135deg,#fef3c7,#fff);border:3px solid #fbbf24">
+      <div style="font-size:48px;margin-bottom:8px">🏆</div>
+      <div style="font-family:'Fredoka One',cursive;font-size:22px;color:var(--navy)">Exam Simulator Completed!</div>
+      <div style="font-size:32px;color:var(--blue);font-family:'Fredoka One',cursive">${progress.exam.score}%</div>
+      <div style="font-size:13px;color:var(--gray-600);margin-top:8px">${progress.exam.score>=80?'¡Estás listo para el examen real! 🎓':'¡Sigue practicando e inténtalo de nuevo!'}</div>
+    </div>`:''}
+  `;
+  document.getElementById('pd-countdown').textContent = document.getElementById('countdown-days').textContent;
+}
+
+// ============================================================
+// INIT
+// ============================================================
+updateHome();
+</script>
+
+<!-- FOOTER -->
+<div style="background:linear-gradient(90deg,#0f172a 0%,#1e3a5f 50%,#0f172a 100%); border-top:1px solid rgba(255,255,255,0.08); padding:10px 24px; text-align:center; position:relative; z-index:2;">
+  <span style="font-family:'Nunito',sans-serif; font-size:12px; color:rgba(255,255,255,0.4); letter-spacing:0.5px;">© Realizado por <span style="color:#fbbf24; font-weight:800;">Iván MOCA</span></span>
+</div>
+
+</body>
+</html>
